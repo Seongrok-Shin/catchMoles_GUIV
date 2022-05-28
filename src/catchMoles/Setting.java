@@ -15,6 +15,7 @@ public class Setting {
     public static final int WIDTH = 600;
     public static final int HEIGHT = 600;
     public static final int CHOSEN_MENU_NUMBER = 4;
+    public static final String[] MENU = {"Game Start", "Scoreboard", "Tutorial",  "Exit"};
     
     public static final int START = 0;
     public static final int SCOREBOARD = 1;
