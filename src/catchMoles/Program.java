@@ -18,7 +18,7 @@ public class Program {
         jFrame = new JFrame("Catch Moles Game");
         jFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         
-        jFrame.getContentPane().add(new homePanel());
+        jFrame.getContentPane().add(new HomePanel());
         jFrame.pack();
         jFrame.setVisible(true);
         jFrame.setResizable(false);

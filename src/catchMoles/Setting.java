@@ -12,8 +12,8 @@ import java.awt.Color;
  * @author ssr7324
  */
 public class Setting {
-    public static final int WIDTH = 600;
-    public static final int HEIGHT = 600;
+    public static final int WIDTH = 700;
+    public static final int HEIGHT = 700;
     public static final int CHOSEN_MENU_NUMBER = 4;
     public static final String[] MENU = {"Game Start", "Scoreboard", "Tutorial",  "Exit"};
     
