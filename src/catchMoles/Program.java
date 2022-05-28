@@ -5,10 +5,22 @@
  */
 package catchMoles;
 
+import javax.swing.JFrame;
+
 /**
  *
  * @author ssr7324
  */
 public class Program {
+    public static JFrame jFrame;
     
+    public static void main(String[] args) {
+        jFrame = new JFrame("Catch Moles Game");
+        jFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        
+        jFrame.getContentPane().add(new homePanel());
+        jFrame.pack();
+        jFrame.setVisible(true);
+        jFrame.setResizable(false);
+    }
 }
