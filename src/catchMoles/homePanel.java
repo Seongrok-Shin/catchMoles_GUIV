@@ -7,12 +7,13 @@ package catchMoles;
 
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Graphics;
 import java.awt.Image;
-import java.awt.event.*;
+import java.awt.event.MouseEvent;
 import java.io.File;
+import java.awt.event.MouseListener;
 import java.io.IOException;
 import javax.imageio.ImageIO;
-import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -41,7 +42,6 @@ public class HomePanel extends JPanel {
             JOptionPane.showMessageDialog(null, "Cannot load the image");
             System.exit(0);
         }
-        backGroundImg();
 
         //Set title later.
         titleLabel = new JLabel("Set Title", SwingConstants.CENTER);
@@ -50,43 +50,119 @@ public class HomePanel extends JPanel {
         menuLabels = new JLabel[Setting.CHOSEN_MENU_NUMBER];
         for (int i = 0; i < Setting.CHOSEN_MENU_NUMBER; i++) {
             menuLabels[i] = new JLabel(Setting.MENU[i]);
-            menuLabels[i].setBounds(580, 190 + (i * 60), 180, 50);
+            menuLabels[i].setBounds(320, 350 + (i * 60), 180, 50);
             menuLabels[i].addMouseListener(homeListener1);
             add(menuLabels[i]);
         }
     }
 
-    private void backGroundImg() {
-        JLabel backgroundLabel = new JLabel(new ImageIcon(backgroundImg));
-        add(backgroundLabel);
+    @Override
+    protected void paintComponent(Graphics g) {
+        super.paintComponent(g);
+
+        g.drawImage(backgroundImg, 0, 0, null);
     }
 
     private class homeListener implements MouseListener {
 
         @Override
         public void mouseClicked(MouseEvent e) {
-            throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+
+            Object obj = e.getSource();
+
+            for (int i = 0; i < Setting.CHOSEN_MENU_NUMBER; i++) {
+
+                if (obj == menuLabels[i]) {
+                    switch (i) {
+                        case Setting.START:
+                            Program.jFrame.getContentPane().removeAll();
+                            //add game panel Program.jFrame.getContentPane().add(); 
+                            Program.jFrame.pack();
+                            Program.jFrame.setVisible(true);
+                            break;
+                        case Setting.SCOREBOARD:
+                            Program.jFrame.getContentPane().removeAll();
+                            //add score panel Program.jFrame.getContentPane().add();
+                            Program.jFrame.pack();
+                            Program.jFrame.setVisible(true);
+                            break;
+                        case Setting.TUTORIAL:
+                            Program.jFrame.getContentPane().removeAll();
+                            //add Tutorial panel Program.jFrame.getContentPane().add();
+                            Program.jFrame.pack();
+                            Program.jFrame.setVisible(true);
+                            break;
+                        case Setting.EXIT:
+                            //To show options
+                            // if(option == option panel with yes/ System.exit(0);
+                            break;
+                        default:
+                            break;
+                    }
+                }
+            }
         }
 
         @Override
         public void mousePressed(MouseEvent e) {
-            throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
         }
 
         @Override
         public void mouseReleased(MouseEvent e) {
-            throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
         }
 
         @Override
         public void mouseEntered(MouseEvent e) {
-            throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+            Object obj = e.getSource();
+
+            for (int i = 0; i < Setting.CHOSEN_MENU_NUMBER; i++) {
+                if (obj == menuLabels[i]) {
+                    switch (i) {
+                        case Setting.START:
+                            menuLabels[i].setForeground(Setting.ENTER_HEAD);
+                            break;
+                        case Setting.SCOREBOARD:
+                            menuLabels[i].setForeground(Setting.ENTER_HEAD);
+                            break;
+                        case Setting.TUTORIAL:
+                            menuLabels[i].setForeground(Setting.ENTER_HEAD);
+                            break;
+                        case Setting.EXIT:
+                            menuLabels[i].setForeground(Setting.ENTER_HEAD);
+                            break;
+                        default:
+                            break;
+                    }
+
+                }
+            }
         }
 
         @Override
         public void mouseExited(MouseEvent e) {
-            throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-        }
+            Object obj = e.getSource();
 
+            for (int i = 0; i < Setting.CHOSEN_MENU_NUMBER; i++) {
+                if (obj == menuLabels[i]) {
+                    switch (i) {
+                        case Setting.START:
+                            menuLabels[i].setForeground(Setting.EXIT_HEAD);
+                            break;
+                        case Setting.SCOREBOARD:
+                            menuLabels[i].setForeground(Setting.EXIT_HEAD);
+                            break;
+                        case Setting.TUTORIAL:
+                            menuLabels[i].setForeground(Setting.EXIT_HEAD);
+                            break;
+                        case Setting.EXIT:
+                            menuLabels[i].setForeground(Setting.EXIT_HEAD);
+                            break;
+                        default:
+                            break;
+                    }
+                }
+
+            }
+        }
     }
 }
