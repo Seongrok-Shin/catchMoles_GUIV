@@ -76,6 +76,7 @@ public class HomePanel extends JPanel {
                         case Setting.START:
                             Program.jFrame.getContentPane().removeAll();
                             //add game panel Program.jFrame.getContentPane().add(); 
+                            Program.jFrame.getContentPane().add(new GamePanel()); 
                             Program.jFrame.pack();
                             Program.jFrame.setVisible(true);
                             break;
