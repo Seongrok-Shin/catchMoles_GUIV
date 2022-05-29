@@ -3,10 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package PDCProject2GUI;
+package PDCProject2GUI.view;
 
 import PDCProject1CUI.Gameboard;
 import PDCProject1CUI.Size;
+import PDCProject2GUI.controller.GameSessionController;
+import PDCProject2GUI.Program;
+import PDCProject2GUI.Setting;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;

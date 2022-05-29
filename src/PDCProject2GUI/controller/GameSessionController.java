@@ -3,8 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package PDCProject2GUI;
+package PDCProject2GUI.controller;
 
+import PDCProject2GUI.MoleButtonListener;
+import PDCProject2GUI.view.GameboardPanel;
 import PDCProject1CUI.Gameboard;
 import java.util.Timer;
 import javax.swing.JFrame;

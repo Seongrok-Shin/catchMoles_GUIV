@@ -5,6 +5,8 @@
  */
 package PDCProject2GUI;
 
+import PDCProject2GUI.data.UserScoreManager;
+import PDCProject2GUI.view.HomePanel;
 import javax.swing.JFrame;
 
 /**
@@ -22,5 +24,8 @@ public class Program {
         jFrame.pack();
         jFrame.setVisible(true);
         jFrame.setResizable(false);
+        
+        //new UserScoreManager();
+        
     }
 }

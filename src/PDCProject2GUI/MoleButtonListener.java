@@ -5,6 +5,9 @@
  */
 package PDCProject2GUI;
 
+import PDCProject2GUI.view.MoleButton;
+import PDCProject2GUI.Setting;
+import PDCProject2GUI.view.GameboardPanel;
 import java.awt.Cursor;
 import java.awt.Image;
 import java.awt.Point;
