@@ -26,6 +26,5 @@ public class Program {
         jFrame.setResizable(false);
         
         //new UserScoreManager();
-        
     }
 }
