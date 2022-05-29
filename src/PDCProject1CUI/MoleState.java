@@ -3,18 +3,17 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package PDCProject2GUI;
-
-import javax.swing.JPanel;
+package PDCProject1CUI;
 
 /**
  *
  * @author ssr7324
  */
-public class GamePanel extends JPanel{
-    GameboardPanel molePanel;
-    
-    public GamePanel(){
-        
-    }
+public enum MoleState {
+    INVISIBLE,
+    SLIGHTLY_VISIBLE,
+    ALMOST_VISIBLE,
+    VISIBLE,
+    MISSED,
+    DEAD
 }

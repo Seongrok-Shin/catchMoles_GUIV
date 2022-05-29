@@ -10,21 +10,35 @@ package PDCProject1CUI;
  * @author OEM
  */
 public class Mole {
-    private boolean isVisible;
+
+    private final int index;
+    private MoleState state;
+
+    public Mole(int index) {
+        this.index = index;
+    }
+
+    public int getIndex() {
+        return this.index;
+    }
 
     public boolean isVisible() {
-        return isVisible;
+        return state.equals(MoleState.VISIBLE);
     }
 
-    public void setIsVisible(boolean isVisible) {
-        this.isVisible = isVisible;
+    public void setState(MoleState state) {
+        this.state = state;
     }
-   
+    
+    public MoleState getState(){
+        return this.state;
+    }
+    
     @Override
-    public String toString(){
-        if(isVisible){
+    public String toString() {
+        if (isVisible()) {
             return "[O]";
-        }else{
+        } else {
             return "[_]";
         }
     }

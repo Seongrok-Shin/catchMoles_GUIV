@@ -5,6 +5,8 @@
  */
 package PDCProject2GUI;
 
+import PDCProject1CUI.Gameboard;
+import PDCProject1CUI.Size;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
@@ -68,15 +70,15 @@ public class HomePanel extends JPanel {
         public void mouseClicked(MouseEvent e) {
 
             Object obj = e.getSource();
-
+            System.out.println("Clicked");
             for (int i = 0; i < Setting.CHOSEN_MENU_NUMBER; i++) {
-
+            System.out.println(menuLabels[i]);
                 if (obj == menuLabels[i]) {
                     switch (i) {
                         case Setting.START:
                             Program.jFrame.getContentPane().removeAll();
                             //add game panel Program.jFrame.getContentPane().add(); 
-                            Program.jFrame.getContentPane().add(new GamePanel()); 
+                            Program.jFrame.getContentPane().add(new GameboardPanel(new Gameboard(new Size(3,3)))); 
                             Program.jFrame.pack();
                             Program.jFrame.setVisible(true);
                             break;

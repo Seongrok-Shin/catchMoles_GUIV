@@ -29,7 +29,6 @@ public class Setting {
     public static final Color ENTER_HEAD = Color.BLUE;
     public static final Color ENTER_TAIL = Color.BLACK;
 
-    public static final int NUMBER_MOLE = 9;
     public static final int TIMER = 60;
     public static final int ADD_SCORE = 10;
     public static final int REMOVE_SCORE = -10;
