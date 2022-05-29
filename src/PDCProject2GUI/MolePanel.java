@@ -3,8 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package catchMoles;
+package PDCProject2GUI;
 
+import PDCProject1CUI.Size;
 import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.Graphics;
@@ -16,6 +17,9 @@ import java.awt.event.MouseEvent;
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 import java.awt.event.MouseListener;
+import java.util.ArrayList;
+import java.util.List;
+import javax.swing.JButton;
 
 /**
  *
@@ -29,8 +33,9 @@ public class MolePanel extends JPanel {
     private Toolkit toolkit;
     private molePanelListener molePanelListener;
     private setMoleInTheHole[] setMoleInTheHoles;
-
-    public MolePanel() {
+    private List<JButton> moles = new ArrayList<JButton>();
+    
+    public MolePanel(Size size) {
         setMolePanel();
         showTheMole();
     }
@@ -54,8 +59,7 @@ public class MolePanel extends JPanel {
         cHammer = toolkit.createCustomCursor(imgHammer, new Point(this.getX(), this.getY()), "img");
         cHammerHit = toolkit.createCustomCursor(imgHammerHit, new Point(this.getX(), this.getY()), "img");
         cNormal = new Cursor(Cursor.DEFAULT_CURSOR);
-        
-        
+
     }
 
     public void showTheMole() {
@@ -64,8 +68,8 @@ public class MolePanel extends JPanel {
 
         molePanelListener = new molePanelListener();
         setMoleInTheHoles = new setMoleInTheHole[Setting.NUMBER_MOLE];
-        
-        for(int i = 0; i < Setting.NUMBER_MOLE; i++){
+
+        for (int i = 0; i < Setting.NUMBER_MOLE; i++) {
             setMoleInTheHoles[i] = new setMoleInTheHole();
             setMoleInTheHoles[i].addMouseListener(molePanelListener);
             this.add(setMoleInTheHoles[i]);
@@ -75,7 +79,7 @@ public class MolePanel extends JPanel {
     private class molePanelListener implements MouseListener {
 
         public molePanelListener() {
-            
+
         }
 
         @Override
