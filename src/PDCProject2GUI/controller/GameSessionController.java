@@ -8,8 +8,9 @@ package PDCProject2GUI.controller;
 import PDCProject2GUI.MoleButtonListener;
 import PDCProject2GUI.view.GameboardPanel;
 import PDCProject1CUI.Gameboard;
+import PDCProject1CUI.UpdateBoardTask;
 import java.util.Timer;
-import javax.swing.JFrame;
+import java.util.TimerTask;
 
 /**
  *
@@ -21,7 +22,7 @@ public class GameSessionController {
     private final Gameboard board;
     private final Timer time = new Timer();
     private final MoleButtonListener moleButtonListener;
-    
+
     public GameSessionController(Gameboard board) {
         this.board = board;
         this.moleButtonListener = new MoleButtonListener();
@@ -30,9 +31,27 @@ public class GameSessionController {
     }
 
     public void gameStart() {
+        BoardUpdateTask boardUpdateTask = new BoardUpdateTask(this.board, this.panel);
+        time.schedule(boardUpdateTask, 0, 500);
     }
-    
-    public GameboardPanel getPanel(){
+
+    public GameboardPanel getPanel() {
         return this.panel;
+    }
+
+    public class BoardUpdateTask extends TimerTask {
+        Gameboard board;
+        GameboardPanel panel;
+        
+        public BoardUpdateTask(Gameboard board, GameboardPanel panel) {
+            this.board = board;
+            this.panel = panel;
+        }
+
+        @Override
+        public void run() {
+            this.board.showOneMole();
+            this.panel.setBoard(board);
+        }
     }
 }

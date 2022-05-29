@@ -15,8 +15,8 @@ public class Setting {
     public static final int WIDTH = 700;
     public static final int HEIGHT = 700;
     
-    public static final int CURSOR_WIDTH = 65;
-    public static final int CURSOR_HEIGHT = 65;
+    public static final int CURSOR_WIDTH = 32;
+    public static final int CURSOR_HEIGHT = 32;
     
     public static final int CHOSEN_MENU_NUMBER = 4;
     public static final String[] MENU = {"Game Start", "Scoreboard", "Tutorial",  "Exit"};

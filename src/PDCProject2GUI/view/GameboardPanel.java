@@ -22,12 +22,9 @@ import javax.imageio.ImageIO;
  * @author ssr7324
  */
 public class GameboardPanel extends JPanel {
-
-
     private Gameboard gameboard;
 
     public GameboardPanel(Gameboard gameboard, MoleButtonListener moleButtonListener) {
-
         this.gameboard = gameboard;
         this.setPreferredSize(new Dimension(700, 700));
         this.setOpaque(false);
@@ -40,6 +37,11 @@ public class GameboardPanel extends JPanel {
         }
     }
 
+    public void setBoard(Gameboard gameboard) {
+        this.gameboard = gameboard;
+        this.repaint();
+    }
+
     @Override
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
@@ -50,6 +52,5 @@ public class GameboardPanel extends JPanel {
             Logger.getLogger(GameboardPanel.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-
 
 }
