@@ -16,6 +16,7 @@ public class Mole {
 
     public Mole(int index) {
         this.index = index;
+        this.state = MoleState.INVISIBLE;
     }
 
     public int getIndex() {

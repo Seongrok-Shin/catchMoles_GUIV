@@ -29,17 +29,18 @@ public class HomePanel extends JPanel {
 
     private JLabel titleLabel;
     private JLabel[] menuLabels;
-    private homeListener homeListener1;
+    private HomeListener homeListener;
     private Image backgroundImg;
 
     public HomePanel() {
-
         setPreferredSize(new Dimension(700, 700));
         setBackground(Color.white);
         setLayout(null);
 
+        homeListener = new HomeListener();
+
         try {
-            backgroundImg = ImageIO.read(new File("./img/backgroud_game.png"));
+            backgroundImg = ImageIO.read(new File("./img/backgroud_home.png"));
         } catch (IOException e) {
             JOptionPane.showMessageDialog(null, "Cannot load the image");
             System.exit(0);
@@ -53,18 +54,19 @@ public class HomePanel extends JPanel {
         for (int i = 0; i < Setting.CHOSEN_MENU_NUMBER; i++) {
             menuLabels[i] = new JLabel(Setting.MENU[i]);
             menuLabels[i].setBounds(320, 350 + (i * 60), 180, 50);
-            menuLabels[i].addMouseListener(homeListener1);
+            menuLabels[i].addMouseListener(homeListener);
             add(menuLabels[i]);
         }
     }
 
-    protected void paintComponent(Graphics g) {
+    @Override
+    public void paintComponent(Graphics g) {
         super.paintComponent(g);
 
         g.drawImage(backgroundImg, 0, 0, null);
     }
 
-    private class homeListener implements MouseListener {
+    private class HomeListener implements MouseListener {
 
         @Override
         public void mouseClicked(MouseEvent e) {
@@ -72,13 +74,14 @@ public class HomePanel extends JPanel {
             Object obj = e.getSource();
             System.out.println("Clicked");
             for (int i = 0; i < Setting.CHOSEN_MENU_NUMBER; i++) {
-            System.out.println(menuLabels[i]);
+                System.out.println(menuLabels[i]);
                 if (obj == menuLabels[i]) {
                     switch (i) {
                         case Setting.START:
                             Program.jFrame.getContentPane().removeAll();
+                            GameSessionController gameSessionController = new GameSessionController(new Gameboard(new Size(3, 3)));
                             //add game panel Program.jFrame.getContentPane().add(); 
-                            Program.jFrame.getContentPane().add(new GameboardPanel(new Gameboard(new Size(3,3)))); 
+                            Program.jFrame.getContentPane().add(gameSessionController.getPanel());
                             Program.jFrame.pack();
                             Program.jFrame.setVisible(true);
                             break;

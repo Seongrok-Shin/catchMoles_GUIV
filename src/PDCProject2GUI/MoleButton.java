@@ -6,6 +6,7 @@
 package PDCProject2GUI;
 
 import PDCProject1CUI.Mole;
+import java.awt.Color;
 import java.awt.Graphics;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -20,7 +21,11 @@ public class MoleButton extends JButton {
 
     public MoleButton(Mole mole) {
         super();
-        this.setOpaque(true);
+        this.setOpaque(false);
+        this.setBackground(new Color(0, 0, 0, 0));
+        this.setBorderPainted(false);
+        this.setFocusPainted(false);
+        this.setContentAreaFilled(false);
         this.mole = mole;
     }
 
