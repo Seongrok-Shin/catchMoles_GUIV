@@ -25,11 +25,13 @@ import javax.swing.event.MouseInputListener;
  * @author ssr7324
  */
 public class MoleButtonListener implements MouseInputListener {
-
     private Image imgCursorNormal, imgCursorPressed;
     private GameboardPanel gameboardPanel;
-
-    public MoleButtonListener() {
+    private MoleButtonInterface delegate;
+    
+    public MoleButtonListener(MoleButtonInterface delegate) {
+        this.delegate = delegate;
+        
         try {
             this.imgCursorNormal = ImageIO.read(new File("./img/ic_cursor_normal.png"))
                     .getScaledInstance(Setting.CURSOR_WIDTH, Setting.CURSOR_HEIGHT, Image.SCALE_SMOOTH);
@@ -48,6 +50,7 @@ public class MoleButtonListener implements MouseInputListener {
     public void mouseClicked(MouseEvent e) {
         MoleButton moleButton = (MoleButton) e.getSource();
         System.out.println("Index: " + moleButton.getMole().getIndex());
+        this.delegate.didHitMoleAtIndex(moleButton.getMole().getIndex());
     }
 
     @Override

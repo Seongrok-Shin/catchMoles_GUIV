@@ -18,17 +18,17 @@ public class Gameboard {
     private final Random rand = new Random();
     private final List<Mole> moles;
     private final Size size;
-    
+
     public Gameboard(Size size) {
         this.size = size;
         this.moles = new ArrayList<>();
         initializeBoard(size);
     }
-    
-    public Size getSize(){
+
+    public Size getSize() {
         return this.size;
     }
-    
+
     private void initializeBoard(Size size) {
         for (int i = 0; i < size.getRow() * size.getCol(); i++) {
             this.moles.add(new Mole(i));
@@ -39,6 +39,22 @@ public class Gameboard {
         reset();
         moles.get(rand.nextInt(moles.size()))
                 .setState(MoleState.VISIBLE);
+    }
+
+    public void nextMolesState() {
+        int randIdx = rand.nextInt(moles.size());
+        boolean isDisplayed = false;
+
+        if (this.moles.get(randIdx).getState() == MoleState.INVISIBLE) {
+            moles.get(randIdx).prepare();
+            isDisplayed = true;
+        }
+
+        for (int i = 0; i < moles.size(); i++) {
+            if (!(i == randIdx && isDisplayed)){
+                moles.get(i).nextState();
+            }
+        }
     }
 
     private void reset() {
@@ -55,12 +71,12 @@ public class Gameboard {
             }
         }
     }
-    
+
     public boolean isMoleVisibleAtIndex(int index) {
         return this.moles.get(index).isVisible();
     }
-    
-    public Mole getMoleAtIndex(int index){
+
+    public Mole getMoleAtIndex(int index) {
         return this.moles.get(index);
     }
 }

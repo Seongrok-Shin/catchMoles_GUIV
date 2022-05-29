@@ -30,9 +30,33 @@ public class Mole {
     public void setState(MoleState state) {
         this.state = state;
     }
-    
-    public MoleState getState(){
+
+    public MoleState getState() {
         return this.state;
+    }
+
+    public void nextState() {
+        switch (this.state) {
+            case SLIGHTLY_VISIBLE:
+                this.state = MoleState.ALMOST_VISIBLE;
+                break;
+            case ALMOST_VISIBLE:
+                this.state = MoleState.VISIBLE;
+                break;
+            case VISIBLE:
+                this.state = MoleState.MISSED;
+                break;
+            case MISSED:
+                this.state = MoleState.INVISIBLE;
+                break;
+            case DEAD:
+                this.state = MoleState.INVISIBLE;
+                break;
+        }
+    }
+    
+    public void prepare(){
+        this.state = MoleState.SLIGHTLY_VISIBLE;
     }
     
     @Override
