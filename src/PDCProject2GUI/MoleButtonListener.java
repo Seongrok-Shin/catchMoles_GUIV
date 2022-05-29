@@ -31,8 +31,10 @@ public class MoleButtonListener implements MouseInputListener {
 
     public MoleButtonListener() {
         try {
-            this.imgCursorNormal = ImageIO.read(new File("./img/ic_cursor_normal.png")).getScaledInstance(Setting.CURSOR_WIDTH, Setting.CURSOR_HEIGHT, Image.SCALE_SMOOTH);
-            this.imgCursorPressed = ImageIO.read(new File("./img/ic_cursor_pressed.png")).getScaledInstance(Setting.CURSOR_WIDTH, Setting.CURSOR_HEIGHT, Image.SCALE_SMOOTH);
+            this.imgCursorNormal = ImageIO.read(new File("./img/ic_cursor_normal.png"))
+                    .getScaledInstance(Setting.CURSOR_WIDTH, Setting.CURSOR_HEIGHT, Image.SCALE_SMOOTH);
+            this.imgCursorPressed = ImageIO.read(new File("./img/ic_cursor_pressed.png"))
+                    .getScaledInstance(Setting.CURSOR_WIDTH, Setting.CURSOR_HEIGHT, Image.SCALE_SMOOTH);
         } catch (IOException ex) {
             Logger.getLogger(MoleButtonListener.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -51,17 +53,20 @@ public class MoleButtonListener implements MouseInputListener {
     @Override
     public void mousePressed(MouseEvent e) {
 
-        this.gameboardPanel.setCursor(Toolkit.getDefaultToolkit().createCustomCursor(imgCursorPressed, new Point(0, 0), "img"));
+        this.gameboardPanel.setCursor(Toolkit.getDefaultToolkit().createCustomCursor(imgCursorPressed,
+                new Point(Setting.CURSOR_WIDTH / 2, Setting.CURSOR_HEIGHT / 2), "img"));
     }
 
     @Override
     public void mouseReleased(MouseEvent e) {
-        this.gameboardPanel.setCursor(Toolkit.getDefaultToolkit().createCustomCursor(imgCursorNormal, new Point(0, 0), "img"));
+        this.gameboardPanel.setCursor(Toolkit.getDefaultToolkit().createCustomCursor(imgCursorNormal,
+                new Point(Setting.CURSOR_WIDTH / 2, Setting.CURSOR_HEIGHT / 2), "img"));
     }
 
     @Override
     public void mouseEntered(MouseEvent e) {
-        this.gameboardPanel.setCursor(Toolkit.getDefaultToolkit().createCustomCursor(imgCursorNormal, new Point(0, 0), "img"));
+        this.gameboardPanel.setCursor(Toolkit.getDefaultToolkit().createCustomCursor(imgCursorNormal,
+                new Point(Setting.CURSOR_WIDTH / 2, Setting.CURSOR_HEIGHT / 2), "img"));
     }
 
     @Override

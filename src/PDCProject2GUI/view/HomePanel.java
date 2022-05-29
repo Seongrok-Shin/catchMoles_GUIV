@@ -87,6 +87,7 @@ public class HomePanel extends JPanel {
                             Program.jFrame.getContentPane().add(gameSessionController.getPanel());
                             Program.jFrame.pack();
                             Program.jFrame.setVisible(true);
+                            gameSessionController.gameStart();
                             break;
                         case Setting.SCOREBOARD:
                             Program.jFrame.getContentPane().removeAll();
