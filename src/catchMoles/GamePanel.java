@@ -12,4 +12,5 @@ import javax.swing.JPanel;
  * @author ssr7324
  */
 public class GamePanel extends JPanel{
+    
 }

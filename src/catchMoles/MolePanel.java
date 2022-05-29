@@ -31,7 +31,8 @@ public class MolePanel extends JPanel {
     private setMoleInTheHole[] setMoleInTheHoles;
 
     public MolePanel() {
-
+        setMolePanel();
+        showTheMole();
     }
 
     private void setMolePanel() {
@@ -53,6 +54,8 @@ public class MolePanel extends JPanel {
         cHammer = toolkit.createCustomCursor(imgHammer, new Point(this.getX(), this.getY()), "img");
         cHammerHit = toolkit.createCustomCursor(imgHammerHit, new Point(this.getX(), this.getY()), "img");
         cNormal = new Cursor(Cursor.DEFAULT_CURSOR);
+        
+        
     }
 
     public void showTheMole() {
@@ -72,6 +75,7 @@ public class MolePanel extends JPanel {
     private class molePanelListener implements MouseListener {
 
         public molePanelListener() {
+            
         }
 
         @Override
