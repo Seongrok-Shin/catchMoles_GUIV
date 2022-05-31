@@ -92,7 +92,7 @@ public class HomePanel extends JPanel {
                         case Setting.SCOREBOARD:
                             Program.jFrame.getContentPane().removeAll();
                             ScoreController scoreController = new ScoreController();
-                            Program.jFrame.getContentPane().add(new ScorePanel());
+                            Program.jFrame.getContentPane().add(new ScorePanel(scoreController));
                             Program.jFrame.pack();
                             Program.jFrame.setVisible(true);
                             break;
