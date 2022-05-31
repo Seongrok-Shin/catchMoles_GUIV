@@ -3,6 +3,7 @@ package PDCProject2GUI.controller;
 
 import PDCProject2GUI.data.Data;
 import PDCProject2GUI.data.Database;
+import java.sql.SQLException;
 import java.util.Observable;
 
 
@@ -12,7 +13,7 @@ public class LoginModel extends Observable {
     public Data data;
     public String username; //to store username later
     
-    public LoginModel() {
+    public LoginModel() throws SQLException {
         this.db = new Database();
         this.db.dbsetup();
     }
