@@ -5,10 +5,17 @@
  */
 package PDCProject2GUI.controller;
 
+import PDCProject1CUI.Score;
+import java.util.List;
+
 /**
  *
  * @author OEM
  */
 public class ScoreController {
+
+    public List<Score> getScores() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
 }
