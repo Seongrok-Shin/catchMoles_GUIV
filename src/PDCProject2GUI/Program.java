@@ -20,7 +20,7 @@ import javax.swing.JPanel;
  */
 public class Program {
     
-    static boolean showloginfirst = true;
+    static boolean showloginfirst = false;
 
     public static JFrame jFrame;
     public static LoginPanel loginPanel;
