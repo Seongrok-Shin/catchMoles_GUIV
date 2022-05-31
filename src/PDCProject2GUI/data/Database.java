@@ -10,15 +10,17 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class Database {
+   
+    
 
     Connection conn = null;
-    String url = "jdbc:derby:JavaDB;create=true";
-    //jdbc:derby://localhost:1527/Database [shh on SHH]
+    String url = "jdbc:derby://localhost:1527/Database";
+    //jdbc:derby://localhost:1527/Database 
     String dbusername = "shh";
     String dbpassword = "shh";
 
-    public void databaseSetUp() {
-        try {
+    public void dbsetup() throws SQLException {
+        //try {
             conn = DriverManager.getConnection(url, dbusername, dbpassword);
             Statement statement = conn.createStatement();
             String tableName = "UserInfo";
@@ -28,32 +30,32 @@ public class Database {
             }
             statement.close();
 
-        } catch (Throwable e) {
-            System.out.println("error");
-
-        }
+//        } catch (SQLException e) {
+//            System.out.println("error");
+//            throw new RuntimeException("fail to connect database", e);
+        //}
     }
 
     public Data checkName(String username, String password) {
         Data data = new Data(); 
         try {
             Statement statement = conn.createStatement();
-            ResultSet rs = statement.executeQuery("SELECT userid, password, score FROM UserInfo "
+            ResultSet rs = statement.executeQuery("SELECT userid, password FROM UserInfo "
                     + "WHERE userid = '" + username + "'");
             if (rs.next()) {
                 String pass = rs.getString("password");
                 System.out.println("***" + pass);
                 System.out.println("found user");
                
+                //If user exists + password is correct, = loginflat = true ,else loginFlag = false. 
                 if (password.compareTo(pass) == 0) {
-                    data.currentScore = rs.getInt("score");
                     data.loginFlag = true;
                 } else {
                     data.loginFlag = false;
                 }
             } else {
-            
-                System.out.println("no such user");
+                //If user does not exist,create a new account
+                System.out.println("Welcome to catch moles Game ");
                 statement.executeUpdate("INSERT INTO UserInfo "
                         + "VALUES('" + username + "', '" + password + "', 0)");
                 data.currentScore = 0;
@@ -72,7 +74,7 @@ public class Database {
             System.out.println("check existing tables.... ");
             String[] types = {"TABLE"};
             DatabaseMetaData dbmd = conn.getMetaData();
-            ResultSet rsDBMeta = dbmd.getTables(null, null, null, null);//types);
+            ResultSet rsDBMeta = dbmd.getTables(null, null, null, null);
             //Statement dropStatement=null;
             while (rsDBMeta.next()) {
                 String tableName = rsDBMeta.getString("TABLE_NAME");
@@ -88,21 +90,4 @@ public class Database {
         }
         return flag;
     }
-    
-    public void quitGame(int score, String username) {
-        Statement statement;
-        try {
-            statement = conn.createStatement();
-            statement.executeUpdate("UPDATE UserInfo SET score=" + score + " WHERE userid='" + username + "'");
-
-        } catch (SQLException ex) {
-            Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
-        }
-
-    }
-    
-      // public void dbsetup() {
-      //  throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    //}
-
 }

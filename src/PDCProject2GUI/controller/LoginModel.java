@@ -10,17 +10,16 @@ public class LoginModel extends Observable {
     
     public Database db;
     public Data data;
-    public String username;
-    public String score;
+    public String username; //to store username later
     
     public LoginModel() {
         this.db = new Database();
-        //this.db.dbsetup();
+        this.db.dbsetup();
     }
     
     
     public void checkName(String username, String password) {
-        this.username = username; // Store username
+        this.username = username; 
         this.data = this.db.checkName(username, password); 
         
         //if (data.loginFlag) {

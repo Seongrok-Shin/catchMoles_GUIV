@@ -3,8 +3,7 @@ package PDCProject2GUI.data;
 
 public class Data {
 
-    boolean loginFlag = false;
-    boolean quitFlag = false;
+    public boolean loginFlag = false;
     int currentScore = 0;
     
 }

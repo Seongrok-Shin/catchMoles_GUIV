@@ -14,29 +14,20 @@ public class LoginController implements ActionListener {
     public LoginController(LoginPanel loginpanel, LoginModel loginmodel) {
         this.loginpanel = loginpanel;
         this.loginmodel = loginmodel;
-        this.loginpanel.addActionListener(this); 
+        this.loginpanel.addActionListener(this); //This able to connect loginPanel and controller
 
     }
     
     @Override
     public void actionPerformed(ActionEvent e) {
-        String command = e.getActionCommand(); 
-        // Obtain the text displayed on the component.
+        String command = e.getActionCommand();
         switch (command) {
             case "Log in": // Login button
-                String username = this.loginpanel.unInput.getText(); // Obtain username.
-            
-                String password = this.loginpanel.pwInput.getText(); // Obtain password.
+                String username = this.loginpanel.unInput.getText(); // Obtain username
+                String password = this.loginpanel.pwInput.getText(); // Obtain password
                 System.out.printf("checking username %s and password %s against model",username ,password);
-                //this.loginmodel.checkName(username, password); // Pass above variables to model. 
+                this.loginmodel.checkName(username, password); // Pass input to model
                 break;
-            case "Quit":
-                // Quit button
-                this.loginmodel.quitGame(); // Record user's current score.
-                break;
-            default:
-                break;
-
         }
 }
 }

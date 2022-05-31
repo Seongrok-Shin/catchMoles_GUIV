@@ -10,12 +10,17 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.GridLayout;
+import java.awt.Image;
 import java.awt.event.ActionListener;
+import java.io.File;
+import java.io.IOException;
 import java.util.Observable;
 import java.util.Observer;
+import javax.imageio.ImageIO;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
@@ -28,13 +33,20 @@ public class LoginPanel extends JPanel implements Observer {
     private JLabel wrongName = new JLabel("Wrong username or passwork!");
 
     private JButton loginButton = new JButton("Log in");
-    public JLabel message = new JLabel("Welcome", JLabel.CENTER);
+    public JLabel message = new JLabel("Please put your Id and password If you want to start new game", JLabel.CENTER);
+    private Image backgroundImg;
 
     public LoginPanel() {
 
         setPreferredSize(new Dimension(700, 700));
         setBackground(Color.white);
-        //setLayout(new GridLayout(2 , 3));
+        
+        try {
+            backgroundImg = ImageIO.read(new File("./img/backgroud_home.png"));
+        } catch (IOException e) {
+            JOptionPane.showMessageDialog(null, "Cannot load the image");
+            System.exit(0);
+        }
         uName.setBounds(300, 30, 300, 60);
         unInput.setBounds(300, 50, 300, 60);
         pWord.setBounds(300, 70, 300, 60);
@@ -65,21 +77,12 @@ public class LoginPanel extends JPanel implements Observer {
 
     @Override
     public void update(Observable o, Object arg) {
-        Data data = (Data) arg; //contain the instance of Data
-//        if (!data.loginFlag) { // loginFlage = false, user need to put input again.
-//            this.unInput.setText("");
-//            this.pwInput.setText("");
-//            this.message.setText("Invalid username or password.");
-//        } else if (!this.started) { // If the game has not started, then start the game.
-//            this.startQuiz(); // Change the interface of the frame.
-//            this.started = true;
-//            this.setQuestion(data.num1, data.num2); // Show the question on the interface.
-//            
-//        } else if (data.quitFlag) { // display current score when user quits
-//            this.quitGame(data.currentScore);
-//        } //else { // Otherwise, update a new question for the user.
-//            //this.setQuestion(data.num1, data.num2);
-//        //}
+        Data data = (Data) arg; 
+        if (!data.loginFlag) { 
+            this.unInput.setText("");
+            this.pwInput.setText("");
+            this.message.setText("Invalid username or password.");
+        } 
+        startGame();
     }
-
 }

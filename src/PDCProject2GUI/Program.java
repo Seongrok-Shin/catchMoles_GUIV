@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package PDCProject2GUI;
 
 import PDCProject2GUI.controller.LoginController;
@@ -14,13 +10,10 @@ import java.awt.PopupMenu;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
-/**
- *
- * @author ssr7324
- */
+
 public class Program {
     
-    static boolean showloginfirst = false;
+    static boolean showloginfirst = true;// loginview first or homepanel first
 
     public static JFrame jFrame;
     public static LoginPanel loginPanel;
@@ -32,12 +25,12 @@ public class Program {
         jFrame.setLocationRelativeTo(null); // Make the frame located at the absolute center of the screen.
 
 
-        loginPanel = new LoginPanel();
+        loginPanel = new LoginPanel(); 
         LoginModel loginModel = new LoginModel();
         LoginController loginController = new LoginController(loginPanel, loginModel);
         loginModel.addObserver(loginPanel);
 
-        homePanel = new HomePanel();
+        homePanel = new HomePanel(); // loginview first or homepanel first
         if(showloginfirst){
             jFrame.getContentPane().add(loginPanel);
         }else {
