@@ -40,7 +40,7 @@ public class LoginPanel extends JPanel implements Observer {
 
         setPreferredSize(new Dimension(700, 700));
         setBackground(Color.white);
-        
+
         try {
             backgroundImg = ImageIO.read(new File("./img/backgroud_home.png"));
         } catch (IOException e) {
@@ -53,14 +53,14 @@ public class LoginPanel extends JPanel implements Observer {
         pwInput.setBounds(300, 90, 300, 60);
         loginButton.setBounds(300, 100, 300, 60);
         message.setBounds(600, 30, 300, 60);
-        
+
         add(uName);
         add(unInput);
         add(pWord);
         add(pwInput);
         add(loginButton);
         add(message);
-  
+
     }
 
     public void startGame() {
@@ -68,6 +68,8 @@ public class LoginPanel extends JPanel implements Observer {
         Program.jFrame.getContentPane().removeAll();
         Program.jFrame.getContentPane().add(Program.homePanel);
         Program.jFrame.repaint();
+        Program.jFrame.pack();
+        Program.jFrame.setVisible(true);
 
     }
 
@@ -77,12 +79,15 @@ public class LoginPanel extends JPanel implements Observer {
 
     @Override
     public void update(Observable o, Object arg) {
-        Data data = (Data) arg; 
-        if (!data.loginFlag) { 
+        Data data = (Data) arg;
+        if (!data.isLoginFlag()) {
             this.unInput.setText("");
             this.pwInput.setText("");
             this.message.setText("Invalid username or password.");
-        } 
-        startGame();
+            this.message.setForeground(Color.red);
+            
+        } else {
+            startGame();
+        }
     }
 }

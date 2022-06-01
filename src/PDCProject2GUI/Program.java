@@ -7,6 +7,7 @@ import PDCProject2GUI.data.UserScoreManager;
 import PDCProject2GUI.view.HomePanel;
 import PDCProject2GUI.view.LoginPanel;
 import java.awt.PopupMenu;
+import java.sql.SQLException;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
@@ -19,7 +20,7 @@ public class Program {
     public static LoginPanel loginPanel;
     public static HomePanel homePanel;
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws SQLException {
         jFrame = new JFrame("Catch Moles Game");
         jFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         jFrame.setLocationRelativeTo(null); // Make the frame located at the absolute center of the screen.

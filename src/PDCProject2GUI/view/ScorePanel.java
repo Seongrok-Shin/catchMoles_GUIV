@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package PDCProject2GUI.view;
 
 import PDCProject1CUI.Score;
@@ -15,10 +11,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 
-/**
- *
- * @author OEM
- */
+
 public class ScorePanel extends JPanel {
 
     private final JLabel titleLabel;
@@ -38,7 +31,6 @@ public class ScorePanel extends JPanel {
         
         for(int i = 0; scores.size() >= i; i++){
            scoreText += scores.get(i) + "\n";
-            
         }
        
 

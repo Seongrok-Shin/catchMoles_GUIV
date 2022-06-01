@@ -23,9 +23,6 @@ public class LoginModel extends Observable {
         this.username = username; 
         this.data = this.db.checkName(username, password); 
         
-        //if (data.loginFlag) {
-            //Go to homepanel
-        //}
         
         this.setChanged(); // Essential. To mark this observable instance has been modified.
         this.notifyObservers(this.data); 

@@ -1,10 +1,5 @@
 package PDCProject2GUI.data;
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 import PDCProject1CUI.Score;
 import PDCProject1CUI.User;
 import java.io.File;
@@ -22,10 +17,6 @@ import java.util.Optional;
 import java.util.Scanner;
 import java.util.StringTokenizer;
 
-/**
- *
- * @author shh9902
- */
 public class UserScoreManager {
 
     private final Map<User, Score> userScores;

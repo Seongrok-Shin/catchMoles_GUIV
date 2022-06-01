@@ -1,5 +1,6 @@
 package PDCProject2GUI.data;
 
+import PDCProject1CUI.User;
 import java.sql.Connection;
 import java.sql.DatabaseMetaData;
 import java.sql.DriverManager;
@@ -19,8 +20,8 @@ public class Database {
     String dbusername = "shh";
     String dbpassword = "shh";
 
-    public void dbsetup() throws SQLException {
-        //try {
+    public void dbsetup() {
+        try {
             conn = DriverManager.getConnection(url, dbusername, dbpassword);
             Statement statement = conn.createStatement();
             String tableName = "UserInfo";
@@ -30,10 +31,9 @@ public class Database {
             }
             statement.close();
 
-//        } catch (SQLException e) {
-//            System.out.println("error");
-//            throw new RuntimeException("fail to connect database", e);
-        //}
+        } catch (SQLException e) {
+            throw new RuntimeException("fail to connect database", e);
+        }
     }
 
     public Data checkName(String username, String password) {
@@ -44,15 +44,15 @@ public class Database {
                     + "WHERE userid = '" + username + "'");
             if (rs.next()) {
                 String pass = rs.getString("password");
-                System.out.println("***" + pass);
-                System.out.println("found user");
+                System.out.println("Found user with password " + pass);
                
-                //If user exists + password is correct, = loginflat = true ,else loginFlag = false. 
+                //If user exists + password is correct, = loginflat become true ,else loginFlag become false. 
                 if (password.compareTo(pass) == 0) {
-                    data.loginFlag = true;
+                    data.setLoginFlag(true);  
                 } else {
-                    data.loginFlag = false;
+                    data.setLoginFlag(false);
                 }
+                System.out.println("Login is succuess?? " + data.loginFlag );
             } else {
                 //If user does not exist,create a new account
                 System.out.println("Welcome to catch moles Game ");
@@ -61,6 +61,7 @@ public class Database {
                 data.currentScore = 0;
                 data.loginFlag = true;
             }
+            data.user = new User(username);
         } catch (SQLException ex) {
             Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -90,4 +91,6 @@ public class Database {
         }
         return flag;
     }
+
+ 
 }
