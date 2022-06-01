@@ -9,7 +9,6 @@ import PDCProject2GUI.MoleButtonListener;
 import PDCProject2GUI.view.GameboardPanel;
 import PDCProject1CUI.Gameboard;
 import PDCProject1CUI.MoleState;
-import PDCProject1CUI.UpdateBoardTask;
 import PDCProject2GUI.MoleButtonInterface;
 import PDCProject2GUI.Setting;
 import java.util.Timer;
@@ -19,7 +18,7 @@ import java.util.TimerTask;
  *
  * @author ssr7324
  */
-public class GameSessionController implements MoleButtonInterface{
+public class GameSessionController implements MoleButtonInterface {
 
     private final GameboardPanel panel;
     private final Gameboard board;
@@ -38,25 +37,32 @@ public class GameSessionController implements MoleButtonInterface{
         time.schedule(boardUpdateTask, 0, Setting.REFRESH_RATE_MS);
     }
 
+    public void gameStop() {
+        time.cancel();
+        this.board.reset();
+    }
+
     public GameboardPanel getPanel() {
         return this.panel;
     }
 
     @Override
     public void didHitMoleAtIndex(int index) {
-        if(board.getMoleAtIndex(index).getState() == MoleState.VISIBLE || board.getMoleAtIndex(index).getState() == MoleState.ALMOST_VISIBLE){
+
+        if (board.getMoleAtIndex(index).getState() == MoleState.VISIBLE || board.getMoleAtIndex(index).getState() == MoleState.ALMOST_VISIBLE) {
             board.getMoleAtIndex(index).setState(MoleState.DEAD);
-        } else{
+        } else {
             board.getMoleAtIndex(index).setState(MoleState.MISSED);
         }
-        
+
         this.panel.setBoard(board);
     }
 
-    public class BoardUpdateTask extends TimerTask {
+    private class BoardUpdateTask extends TimerTask {
+
         Gameboard board;
         GameboardPanel panel;
-        
+
         public BoardUpdateTask(Gameboard board, GameboardPanel panel) {
             this.board = board;
             this.panel = panel;

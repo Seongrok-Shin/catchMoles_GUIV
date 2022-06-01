@@ -1,9 +1,5 @@
-
 package PDCProject2GUI.view;
 
-import PDCProject1CUI.Gameboard;
-import PDCProject1CUI.Size;
-import PDCProject2GUI.controller.GameSessionController;
 import PDCProject2GUI.Program;
 import PDCProject2GUI.Setting;
 import PDCProject2GUI.controller.ScoreController;
@@ -75,13 +71,13 @@ public class HomePanel extends JPanel {
                 if (obj == menuLabels[i]) {
                     switch (i) {
                         case Setting.START:
+                            GamePanel gamePanel = new GamePanel();
                             Program.jFrame.getContentPane().removeAll();
-                            GameSessionController gameSessionController = new GameSessionController(new Gameboard(new Size(3, 3)));
                             //add game panel Program.jFrame.getContentPane().add(); 
-                            Program.jFrame.getContentPane().add(gameSessionController.getPanel());
+                            Program.jFrame.getContentPane().add(gamePanel);
                             Program.jFrame.pack();
                             Program.jFrame.setVisible(true);
-                            gameSessionController.gameStart();
+                            gamePanel.gameSessionController.gameStart();
                             break;
                         case Setting.SCOREBOARD:
                             Program.jFrame.getContentPane().removeAll();

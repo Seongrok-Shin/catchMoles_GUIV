@@ -32,8 +32,9 @@ public class Setting {
     public static final Color ENTER_HEAD = Color.BLUE;
     public static final Color ENTER_TAIL = Color.BLACK;
 
-    public static final int REFRESH_RATE_MS = 350;
-    public static final int TIMER = 60;
+    public static final int REFRESH_RATE_MS = 400;
+    public static final int TIMER = 5;
     public static final int ADD_SCORE = 10;
     public static final int REMOVE_SCORE = -10;
+    public static final int NUMBER_LIFE = 5;
 }
