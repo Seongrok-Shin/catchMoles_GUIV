@@ -1,21 +1,28 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package PDCProject2GUI.controller;
 
 import PDCProject1CUI.Score;
+import PDCProject2GUI.data.ScoreModel;
+import PDCProject2GUI.view.ScorePanel;
 import java.util.List;
 
-/**
- *
- * @author OEM
- */
+
 public class ScoreController {
+
+    private final ScorePanel scorePanel;
+    private final ScoreModel scoreModel;
 
     public List<Score> getScores() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
+    public ScoreController(ScorePanel scorePanel, ScoreModel scoremodel) {
+        this.scorePanel = scorePanel;
+        this.scoreModel = scoremodel;
+    }
+
+    public void setupData() {
+       this.scoreModel.setupData(); 
+        
+    }
 }

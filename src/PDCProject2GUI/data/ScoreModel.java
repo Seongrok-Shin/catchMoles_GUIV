@@ -13,22 +13,24 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Observable;
 import java.util.Optional;
 import java.util.Scanner;
 import java.util.StringTokenizer;
 
-public class UserScoreManager {
+public class ScoreModel extends Observable {
 
-    private final Map<User, Score> userScores;
+    private Map<User, Score> userScores;
     private final File file;
     private String filePath;
     public static Connection conn;
     public static String url = "jdbc:derby://localhost:1527/mole";
     public static String username = "shh9902";
     public static String password = "9902";
+    private final Database db;
 
-    public UserScoreManager() {
-
+    public ScoreModel(Database db) {
+        this.db = db;
         //establishMySQLConnection();
         this.filePath = "./resources/Scoreboard.txt";
         this.userScores = new HashMap();
@@ -102,4 +104,12 @@ public class UserScoreManager {
             System.err.println("SQLException: " + ex.getMessage());
         }
     }
+
+    public void setupData() {
+
+        this.userScores = db.getUserScores();
+        this.setChanged(); // Essential. To mark this observable instance has been modified.
+        this.notifyObservers(this);
+    }
+
 }

@@ -1,18 +1,24 @@
 package PDCProject2GUI.data;
 
+import PDCProject1CUI.Score;
 import PDCProject1CUI.User;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DatabaseMetaData;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Scanner;
+import java.util.StringTokenizer;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class Database {
-   
-    
 
     Connection conn = null;
     String url = "jdbc:derby://localhost:1527/Database";
@@ -37,7 +43,7 @@ public class Database {
     }
 
     public Data checkName(String username, String password) {
-        Data data = new Data(); 
+        Data data = new Data();
         try {
             Statement statement = conn.createStatement();
             ResultSet rs = statement.executeQuery("SELECT userid, password FROM UserInfo "
@@ -45,14 +51,14 @@ public class Database {
             if (rs.next()) {
                 String pass = rs.getString("password");
                 System.out.println("Found user with password " + pass);
-               
+
                 //If user exists + password is correct, = loginflat become true ,else loginFlag become false. 
                 if (password.compareTo(pass) == 0) {
-                    data.setLoginFlag(true);  
+                    data.setLoginFlag(true);
                 } else {
                     data.setLoginFlag(false);
                 }
-                System.out.println("Login is succuess?? " + data.loginFlag );
+                System.out.println("Login is succuess?? " + data.loginFlag);
             } else {
                 //If user does not exist,create a new account
                 System.out.println("Welcome to catch moles Game ");
@@ -67,7 +73,7 @@ public class Database {
         }
         return data;
     }
-    
+
     private boolean checkTableExisting(String newTableName) {
         boolean flag = false;
         try {
@@ -92,5 +98,25 @@ public class Database {
         return flag;
     }
 
+    public Map<User, Score> getUserScores() {
+        Map<User, Score> userScores = new HashMap();
  
+//        Statement statement = conn.createStatement();
+//        ResultSet rs = statement.executeQuery("SELECT userid, password FROM UserInfo "
+//                + "WHERE userid = '" + username + "'");
+
+        //while (rs.next()) {
+            
+//            String line = fileScan.nextLine();
+//            StringTokenizer st = new StringTokenizer(line);
+//            Score score = new Score(Integer.parseInt(st.nextToken()));
+//            User user = new User(st.nextToken());
+//            this.userScores.put(user, score);
+        //}
+        userScores.put(new User("jy"), new Score(33));
+        
+        return userScores;
+        
+    }
+
 }

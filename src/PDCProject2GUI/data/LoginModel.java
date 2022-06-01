@@ -1,5 +1,5 @@
 
-package PDCProject2GUI.controller;
+package PDCProject2GUI.data;
 
 import PDCProject2GUI.data.Data;
 import PDCProject2GUI.data.Database;
@@ -13,9 +13,9 @@ public class LoginModel extends Observable {
     public Data data;
     public String username; //to store username later
     
-    public LoginModel() throws SQLException {
-        this.db = new Database();
-        this.db.dbsetup();
+    
+    public LoginModel(Database db) {
+       this.db = db;
     }
     
     
@@ -28,19 +28,4 @@ public class LoginModel extends Observable {
         this.notifyObservers(this.data); 
     }
     
-    public void quitGame() {
-       
-//        this.db.quitGame(this.data.currentScore, this.username); 
-//        this.data.quitFlag = true; 
-//        this.notifyObservers(this.data);
-    }
-    
-    
-    
-    
-    
-  
-    
 }
-
-

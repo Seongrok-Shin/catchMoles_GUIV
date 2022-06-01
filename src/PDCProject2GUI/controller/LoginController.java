@@ -1,6 +1,7 @@
 
 package PDCProject2GUI.controller;
 
+import PDCProject2GUI.data.LoginModel;
 import PDCProject2GUI.view.LoginPanel;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
