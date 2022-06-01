@@ -5,7 +5,6 @@
  */
 package PDCProject2GUI;
 
-import PDCProject2GUI.data.UserScoreManager;
 import PDCProject2GUI.view.HomePanel;
 import javax.swing.JFrame;
 
@@ -20,11 +19,9 @@ public class Program {
         jFrame = new JFrame("Catch Moles Game");
         jFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         
-        jFrame.getContentPane().add(new HomePanel());
+        jFrame.getContentPane().add(new HomePanel()); 
         jFrame.pack();
         jFrame.setVisible(true);
-        jFrame.setResizable(false);
-        
-        //new UserScoreManager();
+        jFrame.setResizable(false);        
     }
 }

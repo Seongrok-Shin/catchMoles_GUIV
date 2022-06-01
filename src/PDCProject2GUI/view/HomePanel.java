@@ -85,7 +85,7 @@ public class HomePanel extends JPanel {
                             Program.jFrame.getContentPane().removeAll();
                             GameSessionController gameSessionController = new GameSessionController(new Gameboard(new Size(3, 3)));
                             //add game panel Program.jFrame.getContentPane().add(); 
-                            Program.jFrame.getContentPane().add(gameSessionController.getPanel());
+                            Program.jFrame.getContentPane().add(new GamePanel());
                             Program.jFrame.pack();
                             Program.jFrame.setVisible(true);
                             gameSessionController.gameStart();

@@ -29,7 +29,7 @@ public class GameboardPanel extends JPanel {
         this.setPreferredSize(new Dimension(700, 700));
         this.setOpaque(false);
         this.setLayout(new GridLayout(this.gameboard.getSize().getCol(), this.gameboard.getSize().getRow()));
-
+        
         for (int i = 0; i < this.gameboard.getSize().getCol() * this.gameboard.getSize().getRow(); i++) {
             MoleButton moleButton = new MoleButton(this.gameboard.getMoleAtIndex(i));
             moleButton.addMouseListener(moleButtonListener);
