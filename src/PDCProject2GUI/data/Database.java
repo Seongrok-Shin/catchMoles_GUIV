@@ -64,11 +64,11 @@ public class Database {
                         + "VALUES('" + username + "', '" + password + "', 0)");
                 return true;
             }
-            
+
         } catch (SQLException ex) {
             Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
+
         return false;
     }
 
@@ -98,13 +98,11 @@ public class Database {
 
     public Map<User, Score> getUserScores() {
         Map<User, Score> userScores = new HashMap();
- 
+
 //        Statement statement = conn.createStatement();
 //        ResultSet rs = statement.executeQuery("SELECT userid, password FROM UserInfo "
 //                + "WHERE userid = '" + username + "'");
-
         //while (rs.next()) {
-            
 //            String line = fileScan.nextLine();
 //            StringTokenizer st = new StringTokenizer(line);
 //            Score score = new Score(Integer.parseInt(st.nextToken()));
@@ -112,9 +110,24 @@ public class Database {
 //            this.userScores.put(user, score);
         //}
         userScores.put(new User("jy"), new Score(33));
-        
+        userScores.put(new User("jdy"), new Score(33));
+        userScores.put(new User("jay"), new Score(33));
+        userScores.put(new User("jwy"), new Score(33));
+        userScores.put(new User("j2y"), new Score(33));
+
+        userScores.put(new User("jay"), new Score(33));
+
+        userScores.put(new User("jyd"), new Score(33));
         return userScores;
-        
+
+    }
+
+    public void updateUserScore(User user, int score) {
+
+    }
+
+    public Score getScoreForUser(User user) {
+        return null;
     }
 
 }

@@ -59,7 +59,7 @@ public class ScoreModel extends Observable {
     }
 
     public Map<User, Score> getUserScores() {
-        return this.userScores;
+        return db.getUserScores();
     }
 
     private void writeScoresToFile() {

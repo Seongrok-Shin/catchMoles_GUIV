@@ -11,7 +11,9 @@ import PDCProject1CUI.Gameboard;
 import PDCProject1CUI.MoleState;
 import PDCProject1CUI.UpdateBoardTask;
 import PDCProject2GUI.MoleButtonInterface;
+import PDCProject2GUI.Program;
 import PDCProject2GUI.Setting;
+import PDCProject2GUI.data.Database;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -25,12 +27,14 @@ public class GameSessionController implements MoleButtonInterface{
     private final Gameboard board;
     private final Timer time = new Timer();
     private final MoleButtonListener moleButtonListener;
+    private final Database database;
 
-    public GameSessionController(Gameboard board) {
+    public GameSessionController(Gameboard board, Database database) {
         this.board = board;
         this.moleButtonListener = new MoleButtonListener(this);
         this.panel = new GameboardPanel(this.board, this.moleButtonListener);
         this.moleButtonListener.setPanel(panel);
+        this.database = database;
     }
 
     public void gameStart() {
@@ -68,4 +72,11 @@ public class GameSessionController implements MoleButtonInterface{
             this.panel.setBoard(board);
         }
     }
+    
+    private void saveScore(int score) {
+        database.updateUserScore(Program.user, score);
+      
+    }
+    
+
 }

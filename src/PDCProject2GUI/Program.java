@@ -7,7 +7,6 @@ import PDCProject2GUI.controller.ScoreController;
 import PDCProject2GUI.data.LoginModel;
 import PDCProject2GUI.data.Database;
 import PDCProject2GUI.data.ScoreModel;
-//import PDCProject2GUI.data.UserScoreManager;
 import PDCProject2GUI.view.HomePanel;
 import PDCProject2GUI.view.LoginPanel;
 import PDCProject2GUI.view.ScorePanel;
@@ -19,13 +18,14 @@ import javax.swing.JPanel;
 
 public class Program {
     
-    static boolean showloginfirst = true;// loginview first or homepanel first
+    static boolean showloginfirst = false;// loginview first or homepanel first
 
     public static JFrame jFrame;
     public static LoginPanel loginPanel;
     public static HomePanel homePanel;
     public static ScorePanel scorePanel;
     public static User user;
+    public static Database database;
 
     public static void main(String[] args) throws SQLException {
         jFrame = new JFrame("Catch Moles Game");
@@ -33,18 +33,18 @@ public class Program {
         jFrame.setLocationRelativeTo(null); // Make the frame located at the absolute center of the screen.
         
         //database 
-        Database db = new Database();
-        db.dbsetup();
+        database = new Database();
+        database.dbsetup();
         
         
         //login
         loginPanel = new LoginPanel(); 
-        LoginModel loginModel = new LoginModel(db);
+        LoginModel loginModel = new LoginModel(database);
         LoginController loginController = new LoginController(loginPanel, loginModel);
         loginModel.addObserver(loginPanel);
         
         //scorepanel, scorecontroller, scoremodel
-        ScoreModel scoreModel = new ScoreModel(db);
+        ScoreModel scoreModel = new ScoreModel(database);
         ScoreController scoreController = new ScoreController(scorePanel, scoreModel);
         scorePanel = new ScorePanel(scoreController); 
         scoreModel.addObserver(scorePanel);
