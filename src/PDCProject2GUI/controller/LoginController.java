@@ -1,5 +1,7 @@
 package PDCProject2GUI.controller;
 
+import PDCProject1CUI.User;
+import PDCProject2GUI.Program;
 import PDCProject2GUI.data.LoginModel;
 import PDCProject2GUI.view.LoginPanel;
 import java.awt.event.ActionEvent;
@@ -33,7 +35,7 @@ public class LoginController implements ActionListener {
                     boolean isValid = this.loginmodel.checkName(username, password); // Pass input to model
                     if (isValid) {
                         loginmodel.setLoginFlag(true);
-                        loginmodel.setUsername(username);
+                        Program.user = new User(username);
                     } else {
                         loginmodel.setLoginFlag(false);
                         loginmodel.setErrorMessage("Please enter valid username or password");
