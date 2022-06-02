@@ -27,16 +27,12 @@ public class ScorePanel extends JPanel implements Observer {
         this.scoreController = scoreController;
         List<Score> scores = scoreController.getScores();
         String scoreText = "";
-        for (int i = 0; scores.size() >= i; i++) {
+        for (int i = 0; i < scores.size(); i++) {
             scoreText += scores.get(i) + "\n";
         }
         titleLabel = new JLabel(scoreText, SwingConstants.CENTER);
         titleLabel.setBounds(300, 30, 150, 60);
         add(titleLabel);
-    }
-
-    public ScorePanel() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override

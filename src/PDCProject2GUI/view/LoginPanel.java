@@ -5,7 +5,7 @@ import PDCProject2GUI.Program;
 import static PDCProject2GUI.Program.jFrame;
 import PDCProject2GUI.controller.LoginController;
 import PDCProject2GUI.controller.ScoreController;
-import PDCProject2GUI.data.Data;
+import PDCProject2GUI.data.LoginModel;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
@@ -79,14 +79,11 @@ public class LoginPanel extends JPanel implements Observer {
 
     @Override
     public void update(Observable o, Object arg) {
-        Data data = (Data) arg;
-        if (!data.isLoginFlag()) {
-            this.unInput.setText("");
-            this.pwInput.setText("");
-            this.message.setText("Invalid username or password.");
-            this.message.setForeground(Color.red);
-            
-        } else {
+        LoginModel model = (LoginModel) arg;
+        this.message.setForeground(Color.red);
+        this.message.setText(model.getErrorMessage());
+
+        if (model.isLoginFlag()) {
             startGame();
         }
     }

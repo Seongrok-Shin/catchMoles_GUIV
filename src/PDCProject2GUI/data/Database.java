@@ -42,8 +42,7 @@ public class Database {
         }
     }
 
-    public Data checkName(String username, String password) {
-        Data data = new Data();
+    public boolean checkName(String username, String password) {
         try {
             Statement statement = conn.createStatement();
             ResultSet rs = statement.executeQuery("SELECT userid, password FROM UserInfo "
@@ -54,24 +53,23 @@ public class Database {
 
                 //If user exists + password is correct, = loginflat become true ,else loginFlag become false. 
                 if (password.compareTo(pass) == 0) {
-                    data.setLoginFlag(true);
+                    return true;
                 } else {
-                    data.setLoginFlag(false);
+                    return false;
                 }
-                System.out.println("Login is succuess?? " + data.loginFlag);
             } else {
                 //If user does not exist,create a new account
                 System.out.println("Welcome to catch moles Game ");
                 statement.executeUpdate("INSERT INTO UserInfo "
                         + "VALUES('" + username + "', '" + password + "', 0)");
-                data.currentScore = 0;
-                data.loginFlag = true;
+                return true;
             }
-            data.user = new User(username);
+            
         } catch (SQLException ex) {
             Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
         }
-        return data;
+        
+        return false;
     }
 
     private boolean checkTableExisting(String newTableName) {

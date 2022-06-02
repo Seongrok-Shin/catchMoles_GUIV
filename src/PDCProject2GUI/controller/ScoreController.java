@@ -4,6 +4,7 @@ package PDCProject2GUI.controller;
 import PDCProject1CUI.Score;
 import PDCProject2GUI.data.ScoreModel;
 import PDCProject2GUI.view.ScorePanel;
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -13,7 +14,7 @@ public class ScoreController {
     private final ScoreModel scoreModel;
 
     public List<Score> getScores() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return new ArrayList<>();
     }
     
     public ScoreController(ScorePanel scorePanel, ScoreModel scoremodel) {

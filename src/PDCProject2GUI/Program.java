@@ -3,7 +3,6 @@ package PDCProject2GUI;
 
 import PDCProject2GUI.controller.LoginController;
 import PDCProject2GUI.controller.ScoreController;
-import PDCProject2GUI.data.Data;
 import PDCProject2GUI.data.LoginModel;
 import PDCProject2GUI.data.Database;
 import PDCProject2GUI.data.ScoreModel;
@@ -43,9 +42,9 @@ public class Program {
         loginModel.addObserver(loginPanel);
         
         //scorepanel, scorecontroller, scoremodel
-        scorePanel = new ScorePanel(); 
         ScoreModel scoreModel = new ScoreModel(db);
         ScoreController scoreController = new ScoreController(scorePanel, scoreModel);
+        scorePanel = new ScorePanel(scoreController); 
         scoreModel.addObserver(scorePanel);
         
 

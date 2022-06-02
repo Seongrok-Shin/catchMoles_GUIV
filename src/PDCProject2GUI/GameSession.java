@@ -5,7 +5,6 @@
  */
 package PDCProject2GUI;
 
-import PDCProject2GUI.data.UserScoreManager;
 import PDCProject1CUI.*;
 import java.util.Scanner;
 import java.util.Timer;
