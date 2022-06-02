@@ -1,6 +1,7 @@
 
 package PDCProject2GUI;
 
+import PDCProject1CUI.User;
 import PDCProject2GUI.controller.LoginController;
 import PDCProject2GUI.controller.ScoreController;
 import PDCProject2GUI.data.LoginModel;
@@ -24,6 +25,7 @@ public class Program {
     public static LoginPanel loginPanel;
     public static HomePanel homePanel;
     public static ScorePanel scorePanel;
+    public static User user;
 
     public static void main(String[] args) throws SQLException {
         jFrame = new JFrame("Catch Moles Game");
