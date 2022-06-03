@@ -8,14 +8,8 @@ package PDCProject2GUI.view;
 import PDCProject1CUI.Gameboard;
 import PDCProject2GUI.MoleButtonListener;
 import java.awt.Dimension;
-import java.awt.Graphics;
 import java.awt.GridLayout;
 import javax.swing.JPanel;
-import java.io.File;
-import java.io.IOException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.imageio.ImageIO;
 
 /**
  *
@@ -41,16 +35,4 @@ public class GameboardPanel extends JPanel {
         this.gameboard = gameboard;
         this.repaint();
     }
-
-    @Override
-    public void paintComponent(Graphics g) {
-        super.paintComponent(g);
-
-        try {
-            g.drawImage(ImageIO.read(new File("./img/bg_gamepanel.png")), 0, 0, null);
-        } catch (IOException ex) {
-            Logger.getLogger(GameboardPanel.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
-
 }

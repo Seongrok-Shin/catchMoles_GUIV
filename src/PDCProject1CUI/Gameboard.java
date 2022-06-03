@@ -57,7 +57,7 @@ public class Gameboard {
         }
     }
 
-    private void reset() {
+    public void reset() {
         for (int i = 0; i < moles.size(); i++) {
             moles.get(i).setState(MoleState.INVISIBLE);
         }
