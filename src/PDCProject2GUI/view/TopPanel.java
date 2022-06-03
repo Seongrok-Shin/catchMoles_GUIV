@@ -5,14 +5,18 @@
  */
 package PDCProject2GUI.view;
 
+import PDCProject1CUI.Gameboard;
+import PDCProject2GUI.HomeButtonListener;
 import PDCProject2GUI.Setting;
+import java.awt.Color;
 import java.awt.Dimension;
-import javax.swing.BorderFactory;
+import java.awt.Font;
+import java.awt.Insets;
 import javax.swing.ImageIcon;
+import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
-import javax.swing.border.TitledBorder;
 
 /**
  *
@@ -23,16 +27,19 @@ public class TopPanel extends JPanel {
     public static JLabel[] lifeLabel;
     public static JLabel timerLabel;
     public static JLabel timer;
-    
-    public TopPanel() {
+    public static JButton homeButton;
+    public Gameboard board;
+    public TopPanel(Gameboard board) {
         this.setPreferredSize(new Dimension(700, 700));
         this.setOpaque(false);
         this.setLayout(null);
 
+        this.board = board;
         setLifePanel();
-        setTimerPanel();
         setMenuPanel();
-        this.repaint();
+        setTimerPanel();
+        
+        repaint();
     }
 
     public void setLifePanel() {
@@ -52,19 +59,27 @@ public class TopPanel extends JPanel {
     public void setTimerPanel() {
         ImageIcon imgTimer = new ImageIcon("./img/timer.png");
 
-        timerLabel = new JLabel("", imgTimer, SwingConstants.CENTER);
+        timerLabel = new JLabel("60", imgTimer, SwingConstants.CENTER);
         timerLabel.setBounds(325, 0, 50, 50);
-        
+
         timer = new JLabel("60", SwingConstants.CENTER);
-        timer.setBounds(380, 0, 50,50);
-        this.setBorder(BorderFactory.createTitledBorder(null, "TIME", TitledBorder.CENTER,TitledBorder.TOP));
+        timer.setBounds(325, 40, 50, 50);
+        timer.setFont(new Font("Times New Roman", Font.BOLD, 32));
         this.add(timerLabel);
+        this.add(timer);
     }
 
     public void setMenuPanel() {
+        HomeButtonListener homeButtonListener = new HomeButtonListener(board);
         ImageIcon imgHome = new ImageIcon("./img/home.png");
-        timerLabel = new JLabel("", imgHome, SwingConstants.CENTER);
-        timerLabel.setBounds(630, 5, 64, 64);
-        this.add(timerLabel);
+        homeButton = new JButton();
+        homeButton.setBounds(630, 5, 64, 64);
+        homeButton.setIcon(imgHome);
+        homeButton.setOpaque(false);
+        homeButton.setBackground(new Color(255, 0, 0, 0));
+        homeButton.setBorderPainted(false);
+        homeButton.setMargin(new Insets(3, 3, 3, 3));
+        homeButton.addMouseListener(homeButtonListener);
+        this.add(homeButton);
     }
 }

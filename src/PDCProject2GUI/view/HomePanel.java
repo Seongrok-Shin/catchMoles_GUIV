@@ -77,7 +77,6 @@ public class HomePanel extends JPanel {
                             Program.jFrame.getContentPane().add(gamePanel);
                             Program.jFrame.pack();
                             Program.jFrame.setVisible(true);
-                            gamePanel.gameSessionController.gameStart();
                             break;
                         case Setting.SCOREBOARD:
                             Program.jFrame.getContentPane().removeAll();
@@ -93,8 +92,7 @@ public class HomePanel extends JPanel {
                             Program.jFrame.setVisible(true);
                             break;
                         case Setting.EXIT:
-                            //To show options
-                            // if(option == option panel with yes/ System.exit(0);
+                            System.exit(0);
                             break;
                         default:
                             break;

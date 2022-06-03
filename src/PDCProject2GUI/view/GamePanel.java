@@ -38,6 +38,8 @@ public class GamePanel extends JPanel {
         this.add(gameSessionController.getPanel());
         this.topPaneController.getPanel().setBounds(0, 0, 700, 100);
         this.add(topPaneController.getPanel());
+        this.gameSessionController.gameStart();
+        this.gameSessionController.timerStart();
     }
 
     @Override
