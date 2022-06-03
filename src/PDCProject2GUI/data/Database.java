@@ -16,7 +16,7 @@ import java.util.logging.Logger;
 public class Database {
 
     Connection conn = null;
-    String url = "jdbc:derby://localhost:1527/Database";
+    String url = "jdbc:derby:userDB; create=true";
     //jdbc:derby://localhost:1527/Database 
     String dbusername = "shh";
     String dbpassword = "shh";
