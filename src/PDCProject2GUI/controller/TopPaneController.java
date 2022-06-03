@@ -7,6 +7,7 @@ package PDCProject2GUI.controller;
 
 import PDCProject1CUI.Gameboard;
 import PDCProject2GUI.Setting;
+import PDCProject2GUI.data.Database;
 import PDCProject2GUI.view.TopPanel;
 
 /**
@@ -19,10 +20,12 @@ public class TopPaneController {
     private final Gameboard board;
     public static int numberOfLife;
     public static boolean lifeLack;
-
-    public TopPaneController(Gameboard board) {
+    private Database database;
+    
+    public TopPaneController(Gameboard board, Database database) {
         this.board = board;
-        topPanel = new TopPanel(this.board);
+        this.database = database;
+        topPanel = new TopPanel(this.board, this.database);
         lifeLack = false;
         numberOfLife = Setting.NUMBER_LIFE;
         setLife(numberOfLife);

@@ -2,23 +2,15 @@ package PDCProject2GUI.view;
 
 import PDCProject1CUI.Score;
 import PDCProject1CUI.User;
-import PDCProject2GUI.Program;
 import PDCProject2GUI.controller.ScoreController;
 import PDCProject2GUI.data.ScoreModel;
-import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.GridLayout;
-import java.util.List;
 import java.util.Map;
 import java.util.Observable;
 import java.util.Observer;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JTextArea;
-import javax.swing.JTextField;
 import javax.swing.JTextPane;
-import javax.swing.SwingConstants;
 
 public class ScorePanel extends JPanel implements Observer {
 

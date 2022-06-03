@@ -14,7 +14,6 @@ import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Observable;
-import java.util.Optional;
 import java.util.Scanner;
 import java.util.StringTokenizer;
 

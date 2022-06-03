@@ -10,10 +10,8 @@ import PDCProject2GUI.data.ScoreModel;
 import PDCProject2GUI.view.HomePanel;
 import PDCProject2GUI.view.LoginPanel;
 import PDCProject2GUI.view.ScorePanel;
-import java.awt.PopupMenu;
 import java.sql.SQLException;
 import javax.swing.JFrame;
-import javax.swing.JPanel;
 
 
 public class Program {

@@ -5,8 +5,6 @@ import PDCProject1CUI.Score;
 import PDCProject1CUI.User;
 import PDCProject2GUI.data.ScoreModel;
 import PDCProject2GUI.view.ScorePanel;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Map;
 
 

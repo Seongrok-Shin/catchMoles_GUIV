@@ -3,7 +3,6 @@ package PDCProject2GUI.data;
 
 import PDCProject1CUI.User;
 import PDCProject2GUI.data.Database;
-import java.sql.SQLException;
 import java.util.Observable;
 
 

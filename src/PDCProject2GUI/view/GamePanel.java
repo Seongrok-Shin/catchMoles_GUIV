@@ -9,6 +9,7 @@ import PDCProject1CUI.Gameboard;
 import PDCProject1CUI.Size;
 import PDCProject2GUI.controller.GameSessionController;
 import PDCProject2GUI.controller.TopPaneController;
+import PDCProject2GUI.data.Database;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.io.File;
@@ -24,12 +25,12 @@ import javax.swing.JPanel;
  */
 public class GamePanel extends JPanel {
 
-    GameSessionController gameSessionController;
-    TopPaneController topPaneController;
-
+    private GameSessionController gameSessionController;
+    private TopPaneController topPaneController;
+    
     public GamePanel() {
-        gameSessionController = new GameSessionController(new Gameboard(new Size(3, 3)));
-        topPaneController = new TopPaneController(new Gameboard(new Size(3, 3)));
+        gameSessionController = new GameSessionController(new Gameboard(new Size(3, 3)), new Database());
+        topPaneController = new TopPaneController(new Gameboard(new Size(3, 3)), new Database());
         this.setPreferredSize(new Dimension(700, 700));
         this.setOpaque(false);
         this.setLayout(null);

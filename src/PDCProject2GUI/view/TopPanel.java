@@ -8,6 +8,7 @@ package PDCProject2GUI.view;
 import PDCProject1CUI.Gameboard;
 import PDCProject2GUI.HomeButtonListener;
 import PDCProject2GUI.Setting;
+import PDCProject2GUI.data.Database;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
@@ -28,12 +29,14 @@ public class TopPanel extends JPanel {
     public static JLabel timerLabel;
     public static JLabel timer;
     public static JButton homeButton;
-    public Gameboard board;
-    public TopPanel(Gameboard board) {
+    private Gameboard board;
+    private Database database;
+    
+    public TopPanel(Gameboard board, Database database) {
         this.setPreferredSize(new Dimension(700, 700));
         this.setOpaque(false);
         this.setLayout(null);
-
+        this.database = database;
         this.board = board;
         setLifePanel();
         setMenuPanel();
@@ -70,7 +73,7 @@ public class TopPanel extends JPanel {
     }
 
     public void setMenuPanel() {
-        HomeButtonListener homeButtonListener = new HomeButtonListener(board);
+        HomeButtonListener homeButtonListener = new HomeButtonListener(board, database);
         ImageIcon imgHome = new ImageIcon("./img/home.png");
         homeButton = new JButton();
         homeButton.setBounds(630, 5, 64, 64);

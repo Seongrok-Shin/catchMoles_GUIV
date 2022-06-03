@@ -2,14 +2,9 @@
 package PDCProject2GUI.view;
 
 import PDCProject2GUI.Program;
-import static PDCProject2GUI.Program.jFrame;
-import PDCProject2GUI.controller.LoginController;
-import PDCProject2GUI.controller.ScoreController;
 import PDCProject2GUI.data.LoginModel;
-import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.GridLayout;
 import java.awt.Image;
 import java.awt.event.ActionListener;
 import java.io.File;
@@ -18,7 +13,6 @@ import java.util.Observable;
 import java.util.Observer;
 import javax.imageio.ImageIO;
 import javax.swing.JButton;
-import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;

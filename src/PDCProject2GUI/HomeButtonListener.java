@@ -8,6 +8,7 @@ package PDCProject2GUI;
 import PDCProject1CUI.Gameboard;
 import PDCProject2GUI.controller.GameSessionController;
 import PDCProject2GUI.controller.TopPaneController;
+import PDCProject2GUI.data.Database;
 import PDCProject2GUI.view.HomePanel;
 import PDCProject2GUI.view.TopPanel;
 import java.awt.event.MouseEvent;
@@ -23,8 +24,8 @@ public class HomeButtonListener implements MouseInputListener {
 
     GameSessionController gms;
 
-    public HomeButtonListener(Gameboard board) {
-        gms = new GameSessionController(board);
+    public HomeButtonListener(Gameboard board, Database database) {
+        gms = new GameSessionController(board, database);
     }
 
     @Override

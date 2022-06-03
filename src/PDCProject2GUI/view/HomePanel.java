@@ -2,7 +2,6 @@ package PDCProject2GUI.view;
 
 import PDCProject2GUI.Program;
 import PDCProject2GUI.Setting;
-import PDCProject2GUI.controller.ScoreController;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
@@ -80,8 +79,7 @@ public class HomePanel extends JPanel {
                             break;
                         case Setting.SCOREBOARD:
                             Program.jFrame.getContentPane().removeAll();
-                            ScoreController scoreController = new ScoreController();
-                            Program.jFrame.getContentPane().add(new ScorePanel(scoreController));
+                            Program.jFrame.getContentPane().add(Program.scorePanel);
                             Program.jFrame.pack();
                             Program.jFrame.setVisible(true);
                             break;

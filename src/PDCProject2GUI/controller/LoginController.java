@@ -6,7 +6,6 @@ import PDCProject2GUI.data.LoginModel;
 import PDCProject2GUI.view.LoginPanel;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import javax.swing.JPanel;
 
 public class LoginController implements ActionListener {
 
