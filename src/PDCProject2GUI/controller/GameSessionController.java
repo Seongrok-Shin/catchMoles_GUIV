@@ -9,6 +9,7 @@ import PDCProject2GUI.MoleButtonListener;
 import PDCProject2GUI.view.GameboardPanel;
 import PDCProject1CUI.Gameboard;
 import PDCProject1CUI.MoleState;
+import PDCProject1CUI.Score;
 import PDCProject2GUI.MoleButtonInterface;
 import PDCProject2GUI.Program;
 import PDCProject2GUI.Setting;
@@ -33,6 +34,7 @@ public class GameSessionController implements MoleButtonInterface {
     public static int nTime;
     private final MoleButtonListener moleButtonListener;
     private final Database database;
+    private int score;
 
     public GameSessionController(Gameboard board, Database database) {
         timer = new Timer();
@@ -42,6 +44,7 @@ public class GameSessionController implements MoleButtonInterface {
         this.panel = new GameboardPanel(this.board, this.moleButtonListener);
         this.moleButtonListener.setPanel(panel);
         this.database = database;
+        this.score = 0;
     }
 
     private void saveScore(int score) {
@@ -97,6 +100,10 @@ public class GameSessionController implements MoleButtonInterface {
         nTime = Setting.TIMER;
         timer = new Timer();
         time = new Timer();
+        Score oldScore = database.getScoreForUser(Program.user);
+        if(this.score > oldScore.getScore()){
+            this.saveScore(this.score);
+        }
     }
 
     @Override
@@ -105,7 +112,9 @@ public class GameSessionController implements MoleButtonInterface {
         if (board.getMoleAtIndex(index).getState() == MoleState.VISIBLE || board.getMoleAtIndex(index).getState() == MoleState.ALMOST_VISIBLE) {
             board.getMoleAtIndex(index).setState(MoleState.DEAD);
             TopPaneController.numberOfLife++;
+            score += Setting.ADD_SCORE;
             TopPaneController.setLife(TopPaneController.numberOfLife);
+
         } else {
             board.getMoleAtIndex(index).setState(MoleState.MISSED);
             if (board.getMoleAtIndex(index).getState() == MoleState.MISSED) {

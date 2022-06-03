@@ -3,19 +3,13 @@ package PDCProject2GUI.data;
 import PDCProject1CUI.Score;
 import PDCProject1CUI.User;
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
-import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Observable;
-import java.util.Scanner;
-import java.util.StringTokenizer;
 
 public class ScoreModel extends Observable {
 
@@ -34,18 +28,6 @@ public class ScoreModel extends Observable {
         this.filePath = "./resources/Scoreboard.txt";
         this.userScores = new HashMap();
         this.file = new File(filePath);
-
-//        try {
-//            boolean isCreated = file.createNewFile();
-//            if (isCreated) {
-//                System.out.println("The new file is created.");
-//            } else {
-//                readScoresFromFile();
-//            }
-//        } catch (IOException e) {
-//            System.err.println("Failed to create a Score Board at " + this.filePath + e.toString());
-//            System.exit(1);
-//        }
     }
 
     public void updateUserScore(User user, Score score) {
@@ -72,35 +54,6 @@ public class ScoreModel extends Observable {
             }
         } catch (FileNotFoundException ex) {
             System.out.println(ex.getMessage());
-        }
-    }
-
-    private void readScoresFromFile() {
-
-        try (FileInputStream fileInputStream = new FileInputStream(this.file)) {
-
-            Scanner fileScan = new Scanner(fileInputStream);
-
-            while (fileScan.hasNextLine()) {
-                String line = fileScan.nextLine();
-                StringTokenizer st = new StringTokenizer(line);
-                Score score = new Score(Integer.parseInt(st.nextToken()));
-                User user = new User(st.nextToken());
-                this.userScores.put(user, score);
-            }
-        } catch (FileNotFoundException ex) {
-            System.out.println(ex.getMessage());
-        } catch (IOException ex) {
-            System.out.println(ex.getMessage());
-        }
-    }
-
-    private void establishMySQLConnection() {
-        try {
-            conn = DriverManager.getConnection(url, username, password);
-            System.out.println(url + " connected...");
-        } catch (SQLException ex) {
-            System.err.println("SQLException: " + ex.getMessage());
         }
     }
 

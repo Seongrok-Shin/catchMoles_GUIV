@@ -1,4 +1,3 @@
-
 package PDCProject2GUI;
 
 import PDCProject1CUI.User;
@@ -13,10 +12,7 @@ import PDCProject2GUI.view.ScorePanel;
 import java.sql.SQLException;
 import javax.swing.JFrame;
 
-
 public class Program {
-    
-    static boolean showloginfirst = false;// loginview first or homepanel first
 
     public static JFrame jFrame;
     public static LoginPanel loginPanel;
@@ -29,37 +25,29 @@ public class Program {
         jFrame = new JFrame("Catch Moles Game");
         jFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         jFrame.setLocationRelativeTo(null); // Make the frame located at the absolute center of the screen.
-        
+
         //database 
         database = new Database();
         database.dbsetup();
-        
-        
+
         //login
-        loginPanel = new LoginPanel(); 
+        loginPanel = new LoginPanel();
         LoginModel loginModel = new LoginModel(database);
         LoginController loginController = new LoginController(loginPanel, loginModel);
         loginModel.addObserver(loginPanel);
-        
+
         //scorepanel, scorecontroller, scoremodel
         ScoreModel scoreModel = new ScoreModel(database);
         ScoreController scoreController = new ScoreController(scorePanel, scoreModel);
-        scorePanel = new ScorePanel(scoreController); 
+        scorePanel = new ScorePanel(scoreController);
         scoreModel.addObserver(scorePanel);
-        
 
         homePanel = new HomePanel(); // loginview first or homepanel first
-        if(showloginfirst){
-            jFrame.getContentPane().add(loginPanel);
-        }else {
-            jFrame.getContentPane().add(homePanel); 
-        }
+
+        jFrame.getContentPane().add(loginPanel);
+        
         jFrame.pack();
         jFrame.setVisible(true);
         jFrame.setResizable(false);
-        
-        
-
-        //new UserScoreManager();
     }
 }
