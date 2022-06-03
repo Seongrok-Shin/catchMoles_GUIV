@@ -1,18 +1,10 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package PDCProject2GUI;
 
 import PDCProject1CUI.*;
 import java.util.Scanner;
 import java.util.Timer;
 
-/**
- *
- * @author ssr7324
- */
 public class GameSession {
 
     private final Gameboard gameboard;
@@ -73,7 +65,7 @@ public class GameSession {
                         }
                     } catch (NumberFormatException e) {
 
-                        System.out.println("Please enter 'q' for quit anytime or "
+                             System.out.println("Please enter 'q' for quit anytime or "
                                 + "a number between 1 and 9!");
                     }
                 }
