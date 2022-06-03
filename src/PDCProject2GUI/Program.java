@@ -28,7 +28,6 @@ public class Program {
 
         //database 
         database = new Database();
-        database.dbsetup();
 
         //login
         loginPanel = new LoginPanel();

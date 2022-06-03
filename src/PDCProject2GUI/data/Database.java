@@ -15,13 +15,18 @@ import java.util.logging.Logger;
 
 public class Database {
 
-    Connection conn = null;
+    Connection conn;
     String url = "jdbc:derby://localhost:1527/Database; create=true";
     //jdbc:derby://localhost:1527/Database 
     String dbusername = "shh";
     String dbpassword = "shh";
 
+    public Database(){
+        dbsetup();
+    }
+    
     public void dbsetup() {
+        
         try {
             conn = DriverManager.getConnection(url, dbusername, dbpassword);
             Statement statement = conn.createStatement();

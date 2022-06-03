@@ -89,6 +89,10 @@ public class GameSessionController implements MoleButtonInterface {
     }
 
     public void backToMain() {
+        Score oldScore = database.getScoreForUser(Program.user);
+        if(this.score > oldScore.getScore()){
+            this.saveScore(this.score);
+        }
         gameStop();
         timerStop();
         Program.jFrame.getContentPane().removeAll();
@@ -100,10 +104,6 @@ public class GameSessionController implements MoleButtonInterface {
         nTime = Setting.TIMER;
         timer = new Timer();
         time = new Timer();
-        Score oldScore = database.getScoreForUser(Program.user);
-        if(this.score > oldScore.getScore()){
-            this.saveScore(this.score);
-        }
     }
 
     @Override
