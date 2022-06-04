@@ -62,12 +62,6 @@ public class LoginController implements ActionListener {
          if (password.length() < 3) {
             return "Password must be at least 3 characters";
         }
-        
-        
-        
-        
-        
-        
 
         return null;
     }
