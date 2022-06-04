@@ -39,7 +39,7 @@ public class LoginPanel extends JPanel implements Observer {
     public LoginPanel() {
 
         setPreferredSize(new Dimension(700, 700));
-        setBackground(Color.white);
+        setBackground(Color.WHITE);
         setLayout(new GridBagLayout());
 
         try {
@@ -55,7 +55,7 @@ public class LoginPanel extends JPanel implements Observer {
         message.setFont(new Font("Segoe UI", Font.BOLD, 16));
         
         
-        add(this.uName, generateNewConstraints(0, 0, 1, 1));
+        add(uName, generateNewConstraints(0, 0, 1, 1));
         add(unInput, generateNewConstraints(0, 1, 1, 1));
         add(pWord, generateNewConstraints(0, 2, 1, 1));
         add(pwInput, generateNewConstraints(0, 3, 1, 1));

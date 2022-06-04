@@ -6,29 +6,52 @@ import PDCProject2GUI.controller.ScoreController;
 import PDCProject2GUI.data.ScoreModel;
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Font;
+import java.awt.Graphics;
+import java.awt.Image;
+import java.io.File;
+import java.io.IOException;
 import java.util.Map;
 import java.util.Observable;
 import java.util.Observer;
+import javax.imageio.ImageIO;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextPane;
 
 public class ScorePanel extends JPanel implements Observer {
 
     private final ScoreController scoreController;
-    private final JTextPane  scoreTextArea;
+    private final JTextPane scoreTextArea;
+    private Image imgScoreboard;
 
     public ScorePanel(ScoreController scoreController) {
 
         setPreferredSize(new Dimension(700, 700));
-        setBackground(Color.white);
         setLayout(null);
 
+        try {
+            imgScoreboard = ImageIO.read(new File("./img/bg_scoreboard.png"));
+        } catch (IOException e) {
+            JOptionPane.showMessageDialog(null, "Cannot load the image");
+            System.exit(0);
+        }
         this.scoreController = scoreController;
 
-        this.scoreTextArea = new JTextPane ();
-        scoreTextArea.setForeground(Color.blue);
+        this.scoreTextArea = new JTextPane();
+        scoreTextArea.setForeground(Color.WHITE);
+        scoreTextArea.setFont(new Font("Segoe UI", Font.BOLD, 16));
         scoreTextArea.setBounds(300, 200, 300, 700);
+        scoreTextArea.setOpaque(false);
+        scoreTextArea.setBackground(new Color(0, 0, 0, 0));
         add(scoreTextArea);
+    }
+
+    @Override
+    public void paintComponent(Graphics g) {
+        super.paintComponent(g);
+
+        g.drawImage(imgScoreboard, 0, 0, null);
     }
 
     @Override
