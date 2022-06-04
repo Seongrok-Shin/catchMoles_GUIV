@@ -9,6 +9,9 @@ import PDCProject1CUI.Gameboard;
 import PDCProject2GUI.Setting;
 import PDCProject2GUI.data.Database;
 import PDCProject2GUI.view.TopPanel;
+import static PDCProject2GUI.view.TopPanel.lifeLabel;
+import static PDCProject2GUI.view.TopPanel.timerLabel;
+import javax.swing.JLabel;
 
 /**
  *
@@ -21,7 +24,7 @@ public class TopPaneController {
     public static int numberOfLife;
     public static boolean lifeLack;
     private Database database;
-    
+
     public TopPaneController(Gameboard board, Database database) {
         this.board = board;
         this.database = database;
@@ -29,6 +32,20 @@ public class TopPaneController {
         lifeLack = false;
         numberOfLife = Setting.NUMBER_LIFE;
         setLife(numberOfLife);
+    }
+
+    public void setGameVariableHidden(boolean isHidden) {
+        if (isHidden) {
+            for (JLabel label : topPanel.lifeLabel) {
+                label.setVisible(false);
+            }
+            topPanel.timerLabel.setVisible(false);
+        } else {
+            for (JLabel label : topPanel.lifeLabel) {
+                label.setVisible(true);
+            }
+            topPanel.timerLabel.setVisible(true);
+        }
     }
 
     public static void setLife(int i) {

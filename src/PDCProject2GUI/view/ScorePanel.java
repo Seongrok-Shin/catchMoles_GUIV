@@ -1,9 +1,13 @@
 package PDCProject2GUI.view;
 
+import PDCProject1CUI.Gameboard;
 import PDCProject1CUI.Score;
+import PDCProject1CUI.Size;
 import PDCProject1CUI.User;
+import PDCProject2GUI.Program;
 import PDCProject2GUI.Setting;
 import PDCProject2GUI.controller.ScoreController;
+import PDCProject2GUI.controller.TopPaneController;
 import PDCProject2GUI.data.ScoreModel;
 import com.sun.scenario.Settings;
 import java.awt.BorderLayout;
@@ -36,11 +40,21 @@ public class ScorePanel extends JPanel implements Observer {
     private static final Comparator<Map.Entry<User, Score>> descendingScoreOrderComparator
             = Collections.reverseOrder(ascendingScoreOrderComparator);
     private final JPanel scoreTable;
+    private final TopPaneController topPaneController;
+    
+    
+    
 
     public ScorePanel(ScoreController scoreController) {
-
+        
         setPreferredSize(new Dimension(700, 700));
         setLayout(null);
+
+        topPaneController = new TopPaneController(new Gameboard(new Size(3, 3)), Program.database);
+        this.topPaneController.getPanel().setBounds(0, 0, 700, 100);
+        
+        topPaneController.setGameVariableHidden(true);
+        this.add(topPaneController.getPanel());
 
         try {
             imgScoreboard = ImageIO.read(new File("./img/bg_scoreboard1.png"));
