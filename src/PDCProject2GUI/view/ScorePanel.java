@@ -2,15 +2,23 @@ package PDCProject2GUI.view;
 
 import PDCProject1CUI.Score;
 import PDCProject1CUI.User;
+import PDCProject2GUI.Setting;
 import PDCProject2GUI.controller.ScoreController;
 import PDCProject2GUI.data.ScoreModel;
+import com.sun.scenario.Settings;
+import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Graphics;
+import java.awt.GridLayout;
 import java.awt.Image;
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
 import java.util.Map;
 import java.util.Observable;
 import java.util.Observer;
@@ -22,8 +30,12 @@ import javax.swing.JTextPane;
 public class ScorePanel extends JPanel implements Observer {
 
     private final ScoreController scoreController;
-    private final JTextPane scoreTextArea;
     private Image imgScoreboard;
+    private static final Comparator<Map.Entry<User, Score>> ascendingScoreOrderComparator
+            = (s1, s2) -> Integer.compare(s1.getValue().getScore(), s2.getValue().getScore());
+    private static final Comparator<Map.Entry<User, Score>> descendingScoreOrderComparator
+            = Collections.reverseOrder(ascendingScoreOrderComparator);
+    private final JPanel scoreTable;
 
     public ScorePanel(ScoreController scoreController) {
 
@@ -38,13 +50,28 @@ public class ScorePanel extends JPanel implements Observer {
         }
         this.scoreController = scoreController;
 
-        this.scoreTextArea = new JTextPane();
-        scoreTextArea.setForeground(Color.WHITE);
-        scoreTextArea.setFont(new Font("Segoe UI", Font.BOLD, 16));
-        scoreTextArea.setBounds(300, 200, 300, 700);
-        scoreTextArea.setOpaque(false);
-        scoreTextArea.setBackground(new Color(0, 0, 0, 0));
-        add(scoreTextArea);
+        scoreTable = new JPanel();
+        scoreTable.setBackground(new Color(0, 0, 0, 0));
+        scoreTable.setLayout(new GridLayout(0, 2));
+        int width = 200;
+        int height = 200;
+        int left = (int) (Setting.WIDTH / 2 - (width / 2));
+        int top = (int) (Setting.HEIGHT / 2 - (height / 2));
+
+        scoreTable.setSize(width, height);
+        scoreTable.setBounds(left, top, width, height);
+        add(scoreTable, BorderLayout.CENTER);
+    }
+
+    private static JTextPane createLabel(String text) {
+        JTextPane textPane = new JTextPane();
+        textPane.setForeground(Color.WHITE);
+        textPane.setFont(new Font("Segoe UI", Font.BOLD, 16));
+        textPane.setBounds(300, 200, 300, 700);
+        textPane.setOpaque(false);
+        textPane.setBackground(new Color(0, 0, 0, 0));
+        textPane.setText(text);
+        return textPane;
     }
 
     @Override
@@ -61,11 +88,19 @@ public class ScorePanel extends JPanel implements Observer {
 
     void setupData() {
 
-        Map<User, Score> scores = scoreController.getScores();
-        scoreTextArea.setText("Username\tScore\n");
-        scores.forEach((user, score) -> {
-            String line = user.getUserName() + "\t" + score.getScore() + "\n";
-            scoreTextArea.setText(scoreTextArea.getText() + line);
-        });
+        Map<User, Score> userScores = scoreController.getScores();
+        List<Map.Entry<User, Score>> sortedScores = new ArrayList<>(userScores.entrySet());
+        sortedScores.sort(descendingScoreOrderComparator);
+
+        for (Map.Entry<User, Score> userScore : sortedScores) {
+            User user = userScore.getKey();
+            Score score = userScore.getValue();
+            JTextPane usernameLabel = createLabel(user.getUserName());
+            JTextPane scoreLabel = createLabel(String.valueOf(score.getScore()));
+            scoreTable.add(usernameLabel);
+            scoreTable.add(scoreLabel);
+        }
+
+        scoreTable.repaint();
     }
 }
