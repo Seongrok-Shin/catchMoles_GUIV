@@ -4,6 +4,7 @@ import PDCProject2GUI.Program;
 import PDCProject2GUI.Setting;
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.event.MouseEvent;
@@ -23,7 +24,8 @@ public class HomePanel extends JPanel {
     private JLabel[] menuLabels;
     private HomeListener homeListener;
     private Image backgroundImg;
-
+    private Font font;
+    
     public HomePanel() {
         setPreferredSize(new Dimension(700, 700));
         setBackground(Color.white);
@@ -41,11 +43,12 @@ public class HomePanel extends JPanel {
         //Set title later.
         titleLabel = new JLabel("Set Title", SwingConstants.CENTER);
         titleLabel.setBounds(300, 30, 300, 60);
-
+        font = new Font("Segoe UI", Font.BOLD, 30);
         menuLabels = new JLabel[Setting.CHOSEN_MENU_NUMBER];
         for (int i = 0; i < Setting.CHOSEN_MENU_NUMBER; i++) {
             menuLabels[i] = new JLabel(Setting.MENU[i]);
-            menuLabels[i].setBounds(320, 350 + (i * 60), 180, 50);
+            menuLabels[i].setFont(font);
+            menuLabels[i].setBounds(300, 350 + (i * 60), 180, 50);
             menuLabels[i].addMouseListener(homeListener);
             add(menuLabels[i]);
         }

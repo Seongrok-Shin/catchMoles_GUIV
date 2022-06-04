@@ -51,11 +51,9 @@ public class LoginPanel extends JPanel implements Observer {
         uName.setFont(new Font("Segoe UI", Font.BOLD, 16));
         uName.setForeground(Color.WHITE);
         unInput.setFont(new Font("Segoe UI", Font.BOLD, 16));
-        unInput.setForeground(Color.WHITE);
         pWord.setFont(new Font("Segoe UI", Font.BOLD, 16));
         pWord.setForeground(Color.WHITE);
         pwInput.setFont(new Font("Segoe UI", Font.BOLD, 16));
-        pwInput.setForeground(Color.WHITE);
         message.setFont(new Font("Segoe UI", Font.BOLD, 16));
         message.setForeground(Color.WHITE);
         
