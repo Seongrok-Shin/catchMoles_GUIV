@@ -17,7 +17,6 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 
-
 public class HomePanel extends JPanel {
 
     private JLabel titleLabel;
@@ -25,7 +24,7 @@ public class HomePanel extends JPanel {
     private HomeListener homeListener;
     private Image backgroundImg;
     private Font font;
-    
+
     public HomePanel() {
         setPreferredSize(new Dimension(700, 700));
         setBackground(Color.white);
@@ -48,7 +47,7 @@ public class HomePanel extends JPanel {
         for (int i = 0; i < Setting.CHOSEN_MENU_NUMBER; i++) {
             menuLabels[i] = new JLabel(Setting.MENU[i]);
             menuLabels[i].setFont(font);
-            menuLabels[i].setBounds(300, 350 + (i * 60), 180, 50);
+            menuLabels[i].setBounds(280, 350 + (i * 60), 180, 50);
             menuLabels[i].addMouseListener(homeListener);
             add(menuLabels[i]);
         }
@@ -87,15 +86,11 @@ public class HomePanel extends JPanel {
                             Program.jFrame.pack();
                             Program.jFrame.setVisible(true);
                             break;
-                        case Setting.TUTORIAL:
-                            Program.jFrame.getContentPane().removeAll();
-                            //add Tutorial panel Program.jFrame.getContentPane().add();
-                            Program.jFrame.pack();
-                            Program.jFrame.setVisible(true);
-                            break;
                         case Setting.EXIT:
-                            System.exit(0);
-                            break;
+                            int result = JOptionPane.showConfirmDialog(null, "Do you want to quit the game?");
+                            if (result == JOptionPane.YES_OPTION) {
+                                System.exit(0);
+                            }
                         default:
                             break;
                     }
@@ -124,9 +119,6 @@ public class HomePanel extends JPanel {
                         case Setting.SCOREBOARD:
                             menuLabels[i].setForeground(Setting.ENTER_HEAD);
                             break;
-                        case Setting.TUTORIAL:
-                            menuLabels[i].setForeground(Setting.ENTER_HEAD);
-                            break;
                         case Setting.EXIT:
                             menuLabels[i].setForeground(Setting.ENTER_HEAD);
                             break;
@@ -149,9 +141,6 @@ public class HomePanel extends JPanel {
                             menuLabels[i].setForeground(Setting.EXIT_HEAD);
                             break;
                         case Setting.SCOREBOARD:
-                            menuLabels[i].setForeground(Setting.EXIT_HEAD);
-                            break;
-                        case Setting.TUTORIAL:
                             menuLabels[i].setForeground(Setting.EXIT_HEAD);
                             break;
                         case Setting.EXIT:

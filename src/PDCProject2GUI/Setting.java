@@ -18,14 +18,13 @@ public class Setting {
     public static final int CURSOR_WIDTH = 32;
     public static final int CURSOR_HEIGHT = 32;
     
-    public static final int CHOSEN_MENU_NUMBER = 4;
-    public static final String[] MENU = {"Game Start", "Scoreboard", "Tutorial",  "Exit"};
+    public static final int CHOSEN_MENU_NUMBER = 3;
+    public static final String[] MENU = {"Game Start", "Scoreboard", "Exit"};
     
     public static final int START = 0;
     public static final int SCOREBOARD = 1;
-    public static final int TUTORIAL = 2;
-    public static final int EXIT = 3;
-    public static final int NOTHING = 4;
+    public static final int EXIT = 2;
+    public static final int NOTHING = 3;
     
     public static final Color EXIT_HEAD = Color.cyan;
     public static final Color EXIT_TAIL = Color.white;
