@@ -31,7 +31,7 @@ public class ScorePanel extends JPanel implements Observer {
         setLayout(null);
 
         try {
-            imgScoreboard = ImageIO.read(new File("./img/bg_scoreboard.png"));
+            imgScoreboard = ImageIO.read(new File("./img/bg_scoreboard1.png"));
         } catch (IOException e) {
             JOptionPane.showMessageDialog(null, "Cannot load the image");
             System.exit(0);
